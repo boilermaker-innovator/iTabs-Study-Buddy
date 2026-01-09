@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTabs Study Buddy - White Card WA</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E55A2B;
+            --secondary: #1A1A2E;
+            --accent: #16213E;
+            --bg: #0F0F1A;
+            --card-bg: #1A1A2E;
+            --text: #FFFFFF;
+            --text-muted: #A0A0B0;
+            --success: #4ADE80;
+            --border: #2A2A4E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .logo span {
+            color: var(--text);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Search Section */
+        .search-section {
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 18px 20px 18px 50px;
+            font-size: 1.1rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            background: var(--card-bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .search-hint {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Results */
+        .results-count {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .result-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .question-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-question {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .result-answer {
+            background: rgba(74, 222, 128, 0.1);
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+
+        .result-answer-label {
+            font-size: 0.8rem;
+            color: var(--success);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .result-answer-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .result-explanation {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .result-reference {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Browse Sections */
+        .browse-section {
+            margin-top: 40px;
+        }
+
+        .browse-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .browse-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .section-tab {
+            padding: 12px 20px;
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-muted);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .section-tab:hover {
+            border-color: var(--primary);
+            color: var(--text);
+        }
+
+        .section-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .section-count {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-left: 5px;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .section-tab {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+
+            .result-card {
+                padding: 15px;
+            }
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            font-size: 1.5rem;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">iTabs<span>-Study Buddy</span></div>
+        <h1>White Card WA Course Helper</h1>
+        <span class="badge">EOT.edu.au Course</span>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">115+</div>
+                <div class="stat-label">Questions</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Sections</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Course Accurate</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-section">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search by question number (e.g. 47) or keywords (e.g. PCBU, hazard, PPE...)">
+            </div>
+            <p class="search-hint">Type a question number, keyword, or paste part of a question to find the answer</p>
+        </div>
+
+        <div id="resultsContainer"></div>
+
+        <div class="browse-section" id="browseSection">
+            <div class="browse-title">Browse by Section</div>
+            <div class="section-tabs" id="sectionTabs"></div>
+            <div id="sectionContent"></div>
+        </div>
+    </div>
+
+    <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+    <footer>
+        <p>iTabs-Study Buddy • White Card WA Edition</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Your study companion that actually knows the course</p>
+        <p style="margin-top: 15px;"><a href="https://www.eot.edu.au/online-courses/white-card/WA/course/" target="_blank" style="background: var(--primary); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">📚 Go to White Card WA Course</a></p>
+    </footer>
+
+    <script>
+        // Question Database
+        const questions = [
+            // SECTION 1: WHS LEGISLATION
+            {
+                section: "Section 1: WHS Legislation",
+                question: "The main objective of the ___ Act 2011 is to secure the health and safety of workers and other persons at the workplace through elimination or minimisation of risks, so as to provide workers and others with the highest level of protection from hazards and risks, so far as reasonably practicable.",
+                answer: "Work Health Safety (WHS)",
+                explanation: "The Work Health and Safety Act 2011 (The Act) is concerned with the health and safety of all those involved with a workplace.",
+                reference: "Section 1, Slide 4"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "What Act promotes and secures the safety and health of a person at work in Western Australia?",
+                answer: "Work Health and Safety Act 2020 WA",
+                explanation: "The WHS Act and accompanying regulations commenced in March 2022 in WA; it provides a framework to protect health, safety and welfare of workers.",
+                reference: "Section 1, Slide 5"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "The main object of this Act is to provide a balanced and nationally ___ framework to secure the health and safety of workers and workplaces.",
+                answer: "consistent",
+                explanation: "The WHS Act aims to provide nationally consistent laws across Australia.",
+                reference: "Section 1, Slides 4-6"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "The Occupational Health and Safety Act 2004 aims to eliminate risks to the health, safety or welfare of employees and other persons at work in which State?",
+                answer: "Victoria",
+                explanation: "Victoria has its own OHS Act 2004 rather than the model WHS laws.",
+                reference: "Section 1, Slide 7"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "The purpose of the WHS Regulation 2017 is to harmonise WHS laws through a model framework that are designed to protect the ___ of workers and improve safety outcomes.",
+                answer: "safety",
+                explanation: "The WHS Regulations are designed to protect the safety of workers and improve safety outcomes.",
+                reference: "Section 1, Slide 8"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "Codes of Practice are a practical guide for PCBUs and workers on how to achieve what particular objective at work?",
+                answer: "Health and Safety",
+                explanation: "Codes of Practice show people in the workplace how they can fulfil the health and safety requirements of the Act.",
+                reference: "Section 1, Slide 9"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "Construction work means any work carried out in connection with which of the following? (Alteration, Maintenance, Dismantling, Renovation, Demolition)",
+                answer: "All of the above",
+                explanation: "Construction work includes alteration, maintenance, dismantling, renovation, demolition, and more.",
+                reference: "Section 1, Slide 11"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "Construction work includes which of the following? (Testing/maintenance of minor nature, Preparatory work/site prep, Prefabrication of elements, Manufacture of plant, Mining)",
+                answer: "Any work connected with any preparatory work or site preparation, including landscaping (as part of site preparation), carried out while undertaking construction work",
+                explanation: "Testing/maintenance of minor nature, manufacture of plant, and mining are NOT construction work.",
+                reference: "Section 1, Slide 11"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "Under the WHS Act 2011, 'a person who conducts the business or undertaking alone or with others, whether or not for profit or gain' is the definition of what?",
+                answer: "Person Conducting a Business or Undertaking OR PCBU",
+                explanation: "A PCBU can be a sole trader, partnership, company, unincorporated association or government department.",
+                reference: "Section 1, Slide 12"
+            },
+            {
+                section: "Section 1: WHS Legislation",
+                question: "'Reasonably practicable', in relation to ensuring a safe workplace, means: (likelihood of hazard, degree of harm, knowledge of hazard, availability of controls, cost of controls)",
+                answer: "All of the above",
+                explanation: "Reasonably practicable considers likelihood, harm, knowledge, availability and cost.",
+                reference: "Section 1, Slide 12"
+            },
+
+            // SECTION 2: DUTY OF CARE
+            {
+                section: "Section 2: Duty of Care",
+                question: "Who has a duty of care, a responsibility, to make sure that they and other people are safe in the workplace?",
+                answer: "Everyone on site including those listed above",
+                explanation: "Everyone has a duty of care - the PCBU, workers, visitors, contractors, etc.",
+                reference: "Section 2, Slide 1"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "In addition to ensuring the health and safety of workers while at work, the PCBU with management or control of a workplace must ensure which of the following?",
+                answer: "The safe means of entering and exiting the workplace",
+                explanation: "The PCBU must ensure the means of entering and exiting the workplace do not affect health and safety.",
+                reference: "Section 2, Slide 3"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "The Work Health and Safety Act 2011, sets out specific duties which a PCBU must ___ with as part of their general duty.",
+                answer: "comply",
+                explanation: "PCBUs must comply with specific duties set out in the WHS Act.",
+                reference: "Section 2, Slide 3"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "Under the WHS Act 2011, a PCBU is NOT responsible for which of the following?",
+                answer: "Ensuring the health and safety of previous workers who are now engaged by another PCBU",
+                explanation: "Once a worker moves to another PCBU, that new PCBU takes on the duty of care.",
+                reference: "Section 2, Slide 3"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "Under the Act, who is required to provide the proper and relevant instruction, training, instruction, and supervision, so as to minimise the risk to health and safety?",
+                answer: "PCBU",
+                explanation: "The PCBU must provide information, training, instruction, and supervision.",
+                reference: "Section 2, Slide 4"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "While at work, ___ must take reasonable care for their own health and safety, and that of others who may be affected by their acts or omissions.",
+                answer: "workers",
+                explanation: "Workers have a duty to take reasonable care for themselves and others.",
+                reference: "Section 2, Slide 5"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "There is a general obligation on ___, manufacturers and suppliers of plant and substances for use by people at work to ensure that their products are not a risk to health and safety when properly used.",
+                answer: "designers",
+                explanation: "Designers, manufacturers and suppliers all have obligations.",
+                reference: "Section 2, Slide 6"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "Other people at the workplace, including customers and visitors must comply with any reasonable ___ that is given by the PCBU.",
+                answer: "instruction",
+                explanation: "Other persons must comply with reasonable instructions from the PCBU.",
+                reference: "Section 2, Slide 7"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "Safe work practices must be followed by everyone involved in the work. If the work is to be performed in a different way the safe work practice must be reviewed and ___ if necessary.",
+                answer: "revised",
+                explanation: "Safe work practices must be reviewed and revised when work changes.",
+                reference: "Section 2, Slide 8"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "Which of the following are safe work practices? A: Drinking alcohol/PPE/Smoking B: Look for hazards/Clean area/Debris removal C: Smoking/Safe equipment/Avoid cleaning D: PPE/No drugs alcohol/Drinking water E: Make own SDS/PPE/Safe equipment",
+                answer: "B and D are correct",
+                explanation: "B and D contain only safe work practices. A, C, E contain unsafe practices.",
+                reference: "Section 2, Slide 8"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "When storing materials and equipment at the worksite, which of the following is NOT the proper procedure?",
+                answer: "Across doorways and walkways",
+                explanation: "Never store materials across doorways and walkways - this blocks exits and creates trip hazards.",
+                reference: "Section 2, Slide 9"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "If smoking on site is permitted there should be designated areas, not enclosed and at least ___ metres from any flammable or combustible goods.",
+                answer: "15",
+                explanation: "Smoking areas must be at least 15 metres from flammable materials.",
+                reference: "Section 2, Slide 9"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "When using an angle grinder, what safe work procedure is recommended to protect against sparks?",
+                answer: "A and B are correct (Wear eye/ear protectors and apron + Position guard over grinding disc)",
+                explanation: "Wear PPE and position the guard correctly for spark protection.",
+                reference: "Section 2, Angle Grinder Safe Work Procedure"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "How can you ensure personal safety while operating an angle grinder? A: Check disc before/after B: Eye protection only with sparks C: Disc not touching before switch on D: Thicker for cutting, thinner for grinding",
+                answer: "A and C are correct",
+                explanation: "Check disc for damage, and ensure disc isn't touching workpiece before turning on. D is backwards - thicker for grinding, thinner for cutting.",
+                reference: "Section 2, Angle Grinder Safe Work Procedure"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "Which is NOT true about effective alcohol and drug programs?",
+                answer: "B: A rigid approach regardless of different conditions (This is NOT true - programs should be tailored to workplace needs)",
+                explanation: "Programs should be tailored to specific conditions, needs and resources of each workplace.",
+                reference: "Section 2, Slide 10"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "Which of the following does NOT require a licence? (Dogging, Rigging, Asbestos removal, Forklift, Chainsaw, Pressure equipment)",
+                answer: "Chainsaw operation",
+                explanation: "Chainsaw operation is not on the list of work requiring licences/permits.",
+                reference: "Section 2, Slide 11"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "An example of work that may require a licence or permit include: (Painting, Hoist operations, Removing carpet, Landscaping, Plumbing)",
+                answer: "Hoist operations",
+                explanation: "Hoist operation is on the list of work requiring special licences.",
+                reference: "Section 2, Slide 11"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "A person must be trained and ___ but does NOT require a licence or ticket to operate a backhoe.",
+                answer: "competent",
+                explanation: "Earthmoving equipment like backhoes require training and competence, but not a licence.",
+                reference: "Section 2, Slide 12"
+            },
+            {
+                section: "Section 2: Duty of Care",
+                question: "What is an example of a prescribed activity?",
+                answer: "Asbestos identification & mobile crane repair",
+                explanation: "Prescribed activities include identification of asbestos and maintenance/repair of mobile cranes.",
+                reference: "Section 2, Slide 13"
+            },
+
+            // SECTION 3: HAZARDS AND RISKS
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "The intention of the WHS Management Plan is to ensure the risks associated with a complex construction project are ___ as there are usually many contractors and subcontractors involved.",
+                answer: "managed",
+                explanation: "WHS management plans ensure risks are managed on complex projects.",
+                reference: "Section 3, Slide 1"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "A ___ is anything (including a person's behaviour and an intrinsic property of a thing) or situation that can cause harm, injury, illness and death.",
+                answer: "hazard",
+                explanation: "A hazard is something that CAN cause harm. Risk is the likelihood it WILL.",
+                reference: "Section 3, Slide 2"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "A risk is defined as:",
+                answer: "The possibility that any hazard will actually cause somebody harm",
+                explanation: "Risk refers to the possibility that harm might occur when exposed to a hazard.",
+                reference: "Section 3, Slide 2"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Some common construction hazards include: A: Noise/manual handling/exposed wires B: Confined spaces/blood infection/frayed cords C: Manual handling/equipment/labelled chemicals D: Asbestos/chemicals/small break room",
+                answer: "A: Noise, manual handling, exposed electrical wires",
+                explanation: "All items in A are hazards. Other options contain non-hazards like 'small break room' or safe practices.",
+                reference: "Section 3, Slide 3"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Hazard identification is the process of recognising that a hazard exists. All hazards must be identified and assessed to determine the level of risk. The risk must then be eliminated or ___.",
+                answer: "controlled",
+                explanation: "Risks must be eliminated or controlled.",
+                reference: "Section 3, Slide 5"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "You can identify hazards in the workplace by: (Completing checklists, Workplace inspections, Monitoring worksite, Feedback from others, Injury records)",
+                answer: "All of the above",
+                explanation: "All of these are valid hazard identification methods.",
+                reference: "Section 3, Slide 5"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "If you identify a hazard during a workplace inspection you should:",
+                answer: "All of the above (Assess risk, Notify relevant people, Control/stop hazard if reasonably practical)",
+                explanation: "Assess, notify, and control or stop the hazard.",
+                reference: "Section 3, Slide 6"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Which of the following is NOT true about a risk assessment?",
+                answer: "A risk assessment justifies a decision that has already been made",
+                explanation: "Don't use risk assessment to justify decisions already made - it should inform decisions.",
+                reference: "Section 3, Slide 7"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Who has responsibilities for risk management? (PCBU, Occupiers/Principal Contractors, Workers, HSR/Committees, Contractors on site)",
+                answer: "All of the above",
+                explanation: "Everyone has risk management responsibilities.",
+                reference: "Section 3, Slide 8"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "A PCBU must consult with ___ when identifying hazards and assessing risks arising from work.",
+                answer: "workers",
+                explanation: "PCBUs must consult with workers on hazard identification and risk assessment.",
+                reference: "Section 3, Slide 8"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "The Five-Step process helps control exposure to health and safety risks; identify the first step:",
+                answer: "Identify the hazard",
+                explanation: "5 Steps: 1. Identify hazards 2. Assess risks 3. Consult/report 4. Control 5. Review",
+                reference: "Section 3, Slide 9"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What is NOT an example of a dangerous good? (Explosives, Flammable liquids/gases, Corrosives, Chemically reactive, Sunscreen, Highly toxic)",
+                answer: "Sunscreen",
+                explanation: "Sunscreen is PPE, not a dangerous good.",
+                reference: "Section 3, Slide 10"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Workers can be exposed to Respirable Crystalline Silica (RCS) while performing which activities? (Tunnelling, Demolition, Brick cutting, Excavation)",
+                answer: "All of the above",
+                explanation: "RCS exposure can occur during all these activities.",
+                reference: "Section 3, Slide 11"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Which picture best identifies a noise hazard?",
+                answer: "Using a jack hammer",
+                explanation: "Jackhammers emit noise levels over 85 dB(A) causing hearing damage.",
+                reference: "Section 3, Slide 3"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "A man bending over lifting a box shows which hazard?",
+                answer: "manual handling",
+                explanation: "Manual handling involves lifting, lowering, pushing, pulling, carrying loads.",
+                reference: "Section 3, Slide 13"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Risks from powered mobile plant include which of the following? A: Open spaces B: Plant overturning C: Mechanical failure D: Correctly tagged equipment",
+                answer: "B and C are correct",
+                explanation: "Plant overturning and mechanical failure are risks. Open spaces and correctly tagged equipment are not.",
+                reference: "Section 3, Slide 14"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What is an example of a hazard associated with traffic and mobile plant equipment?",
+                answer: "Hazard of moving parts and hot engine parts",
+                explanation: "Moving parts and hot engine/body parts are hazards to be aware of.",
+                reference: "Section 3, Slide 15"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Workers outdoors will be exposed to UV ___ and heat ___.",
+                answer: "radiation, stress",
+                explanation: "UV radiation and heat stress are hazards for outdoor workers.",
+                reference: "Section 3, Slide 17"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "The erection, alteration, use and dismantling of ___ exposes workers to the risk of a serious fall or being struck by falling objects.",
+                answer: "scaffold",
+                explanation: "Scaffold work is high risk for falls and falling objects.",
+                reference: "Section 3, Slide 18"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What is one way to minimise the potential of falling objects?",
+                answer: "Create a perimeter containment screening or scaffold fan to contain falling objects",
+                explanation: "Perimeter screening, scaffold fans, hoardings or gantries contain falling objects.",
+                reference: "Section 3, Slide 19"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Work activities in a trench with greater depth than ___ meters require a Safe Work Method Statement (SWMS).",
+                answer: "1.5",
+                explanation: "Trenches deeper than 1.5 metres are high risk construction work requiring SWMS.",
+                reference: "Section 3, Slide 20"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What is NOT an example of a confined space? (Lunch room, Crawl spaces, Excavations, Trenches, Drainage pipes)",
+                answer: "A Lunch Room",
+                explanation: "A lunch room is designed for occupation, has normal access, proper ventilation - not a confined space.",
+                reference: "Section 3, Slide 22"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "An unplanned collapse can involve: A: Unstable building collapse B: Demolition collapse C: Load-bearing crane collapse D: Earth collapse from excavation",
+                answer: "Both A and C (Unstable building and crane/lift collapse)",
+                explanation: "Demolition and excavation collapses are planned activities, not unplanned.",
+                reference: "Section 3, Slide 23"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "To manage unplanned collapses, roofs, walls and floors should be ___ by a competent person before demolition.",
+                answer: "assessed",
+                explanation: "A competent person must assess the structure before demolition work.",
+                reference: "Section 3, Slide 23"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Which is NOT a hazard from hot/cold environments? (UV radiation, Heat stroke, Hypothermia, Slip hazards from ice, Heat exhaustion, Physical strain from PPE)",
+                answer: "Physical strain from wearing heavy protective clothing",
+                explanation: "Physical strain from PPE isn't a temperature hazard itself, though PPE can make temperature effects worse.",
+                reference: "Section 3, Slide 24"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "In extreme environments, ice and condensation add to slip accidents when people are: A: Summertime B: No water break C: High humidity areas D: Using ice products E: Houses with AC",
+                answer: "C and D are correct (High humidity/condensation areas and Using ice/iced products)",
+                explanation: "Freezers, cold rooms, ice products, and high humidity areas like kitchens increase slip risk.",
+                reference: "Section 3, Slide 24"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Which safety sign indicates something a worker MUST do? (Blue hearing protection, Green first aid, Yellow warning, Red fire hose, No smoking)",
+                answer: "Hearing Protection Must Be Worn (blue sign)",
+                explanation: "Blue circle = Regulatory Mandatory - must be followed.",
+                reference: "Section 3, Slide 26"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What sign indicates where firefighting equipment is located?",
+                answer: "Fire Hose (red sign with spiral)",
+                explanation: "Red with white = Fire Sign indicating fire equipment location.",
+                reference: "Section 3, Slide 26"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Which sign indicates something is prohibited?",
+                answer: "No Smoking (red circle with diagonal line)",
+                explanation: "Red circle with diagonal line = Prohibition - not permitted.",
+                reference: "Section 3, Slide 26"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Which sign helps find medical assistance on site?",
+                answer: "First Aid (green sign with white cross)",
+                explanation: "Green with white = Emergency Information including first aid.",
+                reference: "Section 3, Slide 26"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Which is a warning sign?",
+                answer: "Beware of Crane (yellow triangle sign)",
+                explanation: "Yellow triangle = Hazard Warning.",
+                reference: "Section 3, Slide 26"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What information does the green cross sign give?",
+                answer: "Location of a defibrillator",
+                explanation: "The green sign with cross indicates defibrillator location.",
+                reference: "Section 3, Slide 26"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "A construction site safety sign requires all of which PPE? (Safety boots, Hi-vis vest, Hearing protection, Hard hat)",
+                answer: "All of the above",
+                explanation: "Standard construction site entry signs typically require all these PPE items.",
+                reference: "Section 3, Slide 26"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Safety signs demand contractors must have proof of ___ Safety Induction Training before commencing work.",
+                answer: "industry",
+                explanation: "General industry safety induction training (White Card).",
+                reference: "Section 3, Slide 26"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What is NOT true about isolation and danger tagging?",
+                answer: "Operation or corrective work must be performed immediately",
+                explanation: "Work must NOT be performed immediately - isolate and tag first, then work safely.",
+                reference: "Section 3, Slide 28"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What are OUT OF SERVICE tags used for?",
+                answer: "A and D are correct (Prevent accidents/damage AND Warn equipment is damaged/out of service)",
+                explanation: "Yellow/black tags warn of damaged equipment and prevent accidents.",
+                reference: "Section 3, Slide 30"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "Which best describes PPE? A: With other controls B: Administration when risk remains C: Last resort when no other controls D: Prevent access E: Replace with less hazardous",
+                answer: "A and C are correct (Last resort + Together with other controls)",
+                explanation: "PPE is last resort and can be used with other control measures.",
+                reference: "Section 3, Slide 31"
+            },
+            {
+                section: "Section 3: Hazards & Risks",
+                question: "What is NOT a factor when choosing PPE? (Australian Standards, Suitable for activity, Cheapest option, Suitable size, Medical conditions, Length of time worn)",
+                answer: "Will it be the cheapest option for the employer?",
+                explanation: "Cost is not a valid factor for choosing PPE - safety comes first.",
+                reference: "Section 3, Slide 32"
+            },
+
+            // SECTION 4: HEALTH & SAFETY PERSONNEL
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "A health and safety representative has been elected by a work group to ___ them on health and safety issues.",
+                answer: "represent",
+                explanation: "HSRs represent their work group on health and safety matters.",
+                reference: "Section 4, Slide 1"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Which is NOT true of a HSR? (Elected by work group, Consult with PCBU, As many as needed, Assist workers, Secure participation, Work independently of PCBU)",
+                answer: "They work independently to the PCBU in relation to WHS",
+                explanation: "HSRs cooperate WITH the PCBU, not independently.",
+                reference: "Section 4, Slide 1"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "A Health and Safety Committee facilitates cooperation between PCBU and workers in developing and carrying out ___ to ensure health and safety.",
+                answer: "measures",
+                explanation: "HSCs develop and carry out measures for workplace health and safety.",
+                reference: "Section 4, Slide 3"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Who are important WHS personnel? (Supervisor, WHS committee, Emergency staff, Project manager, First aid officers)",
+                answer: "All of the above",
+                explanation: "All of these are key WHS personnel.",
+                reference: "Section 4, Slide 4"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "HSRs can ___ the workplace or any area where work is carried out by workers in the work group.",
+                answer: "inspect",
+                explanation: "HSRs have the power to inspect workplace areas.",
+                reference: "Section 4, Slide 2"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Ways to raise health and safety matters include: (Toolbox talks, WHS meetings, Hazard report form, Discussion with HSR, Workplace consultation)",
+                answer: "All of the above",
+                explanation: "All of these are valid ways to raise WHS issues.",
+                reference: "Section 4, Slide 11"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Ways to obtain WHS information include: (Sharing with coworkers, Reading safety minutes, WHS training, Asking supervisor, Talking to safety authority)",
+                answer: "All of the above",
+                explanation: "All of these are ways to get WHS information.",
+                reference: "Section 4, Slide 12"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Which are types of WHS documents? (JSA, Labels, Receipts, SDS, Invoices, SWMS, SOPs, Risk assessments)",
+                answer: "SDS, JSA, Standard Operating Procedures (SOP's)",
+                explanation: "Receipts and invoices are not WHS documents.",
+                reference: "Section 4, Slide 13"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "To assess risk, you need to consider both likelihood and ___.",
+                answer: "consequences",
+                explanation: "Risk = Likelihood × Consequences.",
+                reference: "Section 4, Slide 15"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Operating machinery with risk of losing fingers, very likely to happen - what risk score?",
+                answer: "1",
+                explanation: "Serious injury + Very likely = Risk Score 1 (act immediately).",
+                reference: "Section 4, Slide 16"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Working with hazardous chemicals - what is another control measure besides PPE and separate storage?",
+                answer: "A: Recommend air monitoring schedule with ventilation and access to fresh air",
+                explanation: "Air monitoring and ventilation are additional engineering controls.",
+                reference: "Section 4, Slide 19"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "WHS Regulations require risks are ___ in a certain order, known as the Hierarchy of Control.",
+                answer: "controlled",
+                explanation: "Risks must be controlled following the Hierarchy of Control.",
+                reference: "Section 4, Slide 18"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Elimination, Substitution, Isolation, Engineering, Administration and PPE are all part of the ___ of controls.",
+                answer: "hierarchy",
+                explanation: "The Hierarchy of Controls lists control measures from most to least effective.",
+                reference: "Section 4, Slide 18"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "In risk management, which best describes ELIMINATION?",
+                answer: "Removing the hazard and associated risk completely",
+                explanation: "Elimination = remove the hazard entirely.",
+                reference: "Section 4, Slide 18"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "In risk management, which best describes SUBSTITUTION?",
+                answer: "Replacing the hazard with something which is less hazardous",
+                explanation: "Substitution = replace with something safer (e.g., water-based paint instead of solvent).",
+                reference: "Section 4, Slide 18"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "In risk management, which best describes ISOLATION?",
+                answer: "Physically separating the hazard from the workers either by distance or the use of barriers",
+                explanation: "Isolation = keep hazard away from workers using barriers or distance.",
+                reference: "Section 4, Slide 18"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "In risk management, which best describes ADMINISTRATION?",
+                answer: "Ensuring there are work methods, practices or procedures designed to minimise exposure to a hazard, as well as providing information, training or instruction",
+                explanation: "Administrative controls include SOPs, training, signage, policies.",
+                reference: "Section 4, Slide 18"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "In risk management, which best describes ENGINEERING?",
+                answer: "Creating a safer environment by providing physical control methods including a mechanical device or process",
+                explanation: "Engineering controls include guards, hoists, ventilation systems.",
+                reference: "Section 4, Slide 18"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "What PPE secures you when working at heights?",
+                answer: "Harness",
+                explanation: "A safety harness prevents falls when working at heights.",
+                reference: "Section 4, Slide 20"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "What PPE protects from sun damage when working outdoors?",
+                answer: "Protective Clothing & Sunscreen",
+                explanation: "UV protective clothing and sunscreen protect against sun damage.",
+                reference: "Section 4, Slide 20"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "What PPE prevents slips and protects feet from falling objects?",
+                answer: "Safety Boots",
+                explanation: "Safety boots with protective toe caps and slip-resistant soles.",
+                reference: "Section 4, Slide 20"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "What PPE limits exposure to airborne particles or contaminated air?",
+                answer: "Respirator",
+                explanation: "Respirators protect against dust, vapour, gas, and oxygen-deficient atmospheres.",
+                reference: "Section 4, Slide 20"
+            },
+            {
+                section: "Section 4: Health & Safety Personnel",
+                question: "Which image shows INCORRECT PPE for asbestos work?",
+                answer: "A (person with no protective suit, hair exposed, just half-face respirator)",
+                explanation: "Asbestos work requires full body protection - coveralls, hood, proper respirator.",
+                reference: "Section 4, Slide 20"
+            },
+
+            // SECTION 5: EMERGENCY PROCEDURES
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "The emergency plan must include: (Effective response, Evacuation procedures, Notify emergency services, Medical treatment, Communications)",
+                answer: "All of the above",
+                explanation: "Emergency plans must cover all of these elements.",
+                reference: "Section 5, Slide 1"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Which is NOT a first aid plan procedure? (Equipment available, Facilities accessible, Document incidents, Certified personnel only, Adequate trained workers, Only one first aid officer)",
+                answer: "Workers have only one main first aid officer regardless of number of workers on site",
+                explanation: "The number of first aid officers should scale with worker numbers.",
+                reference: "Section 5, Slide 2"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Who has responsibilities for first aid in the workplace? (Supervisor, Site Manager, Certified employee, First Aid Officer, Worker)",
+                answer: "All of the above",
+                explanation: "Everyone has a role in first aid compliance.",
+                reference: "Section 5, Slide 3"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "A worker must be familiar with the ___ of first aid equipment.",
+                answer: "location",
+                explanation: "Workers must know where first aid equipment is located.",
+                reference: "Section 5, Slide 3"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Where should first aid staff names/contacts NOT be displayed? (First aid kits, WHS coordinator, Company database, Exit of worksite, Office)",
+                answer: "D: At the exit of the worksite",
+                explanation: "Exit of worksite is not a listed location for first aid contact display.",
+                reference: "Section 5, Slide 5"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "First aid procedures should explain how workers will ___ injuries and illnesses.",
+                answer: "report",
+                explanation: "Procedures must cover how to report workplace injuries and illnesses.",
+                reference: "Section 5, Slide 4"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Which is NOT a notifiable incident type? (Serious burn, Hospital treatment, Medical treatment within 48 hrs, Spinal injury, Amputation, Sprain)",
+                answer: "A sprain",
+                explanation: "A sprain is minor - not a notifiable serious injury.",
+                reference: "Section 5, Slide 7"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "The PCBU must report a notifiable incident to the regulator ___ after becoming aware.",
+                answer: "immediately",
+                explanation: "Notifiable incidents must be reported immediately.",
+                reference: "Section 5, Slide 6"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Near misses/dangerous occurrences include: (Fall/release from height, Structure collapse, Excavation failure, Electric shock, Explosion/fire/gas escape)",
+                answer: "All of the above",
+                explanation: "All of these are dangerous incidents that must be reported.",
+                reference: "Section 5, Slide 6"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Why report incidents to the regulator?",
+                answer: "They use the information to identify solutions to and implement improvements for workplace safety issues",
+                explanation: "Reporting helps prevent future incidents and improve safety.",
+                reference: "Section 5, Slide 10"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "An infection from work is an example of a serious ___ or injury.",
+                answer: "illness",
+                explanation: "Work-related infections are serious illnesses.",
+                reference: "Section 5, Slide 7"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Medical treatment within 48 hours of substance exposure - is this a serious illness/injury? (yes/no)",
+                answer: "yes",
+                explanation: "Medical treatment within 48 hours of exposure is a notifiable serious illness.",
+                reference: "Section 5, Slide 7"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "If a worker has reasonable concern about serious risk to health/safety from a hazard, they must:",
+                answer: "Cease or refuse to carry out work and notify the PCBU as soon as possible",
+                explanation: "Workers can stop unsafe work and must notify the PCBU.",
+                reference: "Section 5, Slide 8"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Which are emergency situations? (Structural collapse, Injury, Trench needs barrier, Toxic vapours, Chemical spill, Late materials, Wrong PPE, Fire)",
+                answer: "Fire, Structural collapse, Chemical spill",
+                explanation: "These are actual emergencies. Trench needing barrier, late materials, wrong PPE are not emergencies.",
+                reference: "Section 5, Slide 13"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "For a gas leak, you must follow ___ response procedures including evacuation plans and reporting procedures.",
+                answer: "emergency",
+                explanation: "Gas leaks require emergency response procedures.",
+                reference: "Section 5, Slide 14"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Key elements of emergency response include: (Keep tidy/Obtain PPE/Raise awareness OR Raise alarm/Keep calm/Obtain PPE OR Raise alarm/Keep calm/Obtain help)",
+                answer: "Raise alarm, Keep calm, Obtain help",
+                explanation: "Keep calm, raise alarm, check safety, obtain help.",
+                reference: "Section 5, Slide 14"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Notification of emergency authorities depends on type of ___ or emergency, legal responsibilities, emergency plan and communications.",
+                answer: "incident",
+                explanation: "The type of incident determines who to notify.",
+                reference: "Section 5, Slide 15"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "In emergency you may need to contact: Fire brigade, police, ___ or workplace personnel.",
+                answer: "ambulance",
+                explanation: "Fire, police and ambulance are the main emergency services (000).",
+                reference: "Section 5, Slide 15"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "To reduce effects of explosion or toxic gas reaction, what document should be developed?",
+                answer: "An emergency plan",
+                explanation: "Emergency plans should cover hazardous chemical emergencies.",
+                reference: "Section 5, Slide 16"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "Why might automatic sprinklers NOT be suitable for some workplaces?",
+                answer: "A: The presence of chemicals that may react with water",
+                explanation: "Water can cause hazardous chemical reactions with some substances.",
+                reference: "Section 5, Slide 16"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "When can you interfere with an electrical incident scene? A: Save life B: Prevent injury C: Relieve suffering D: Prevent property damage",
+                answer: "All of the above",
+                explanation: "All four are valid exceptions for interfering with an incident scene.",
+                reference: "Section 5, Slide 17"
+            },
+            {
+                section: "Section 5: Emergency Procedures",
+                question: "In emergency, person in charge of mobile plant must ensure stop control isn't affected by:",
+                answer: "B: Electrical or electronic circuit malfunction",
+                explanation: "Emergency stops must work despite electrical malfunctions.",
+                reference: "Section 5, Slide 17"
+            }
+        ];
+
+        // Group questions by section
+        const sections = [...new Set(questions.map(q => q.section))];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSectionTabs();
+            renderAllQuestions();
+            setupSearch();
+            setupScrollTop();
+        });
+
+        function renderSectionTabs() {
+            const tabsContainer = document.getElementById('sectionTabs');
+            
+            // Add "All" tab
+            const allTab = document.createElement('div');
+            allTab.className = 'section-tab active';
+            allTab.innerHTML = `All <span class="section-count">(${questions.length})</span>`;
+            allTab.onclick = () => {
+                setActiveTab(allTab);
+                renderAllQuestions();
+            };
+            tabsContainer.appendChild(allTab);
+
+            // Add section tabs
+            sections.forEach(section => {
+                const count = questions.filter(q => q.section === section).length;
+                const tab = document.createElement('div');
+                tab.className = 'section-tab';
+                const shortName = section.replace('Section ', 'S').replace(': ', ': ');
+                tab.innerHTML = `${shortName} <span class="section-count">(${count})</span>`;
+                tab.onclick = () => {
+                    setActiveTab(tab);
+                    renderSectionQuestions(section);
+                };
+                tabsContainer.appendChild(tab);
+            });
+        }
+
+        function setActiveTab(activeTab) {
+            document.querySelectorAll('.section-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            activeTab.classList.add('active');
+        }
+
+        function renderAllQuestions() {
+            const container = document.getElementById('sectionContent');
+            container.innerHTML = '';
+            
+            let questionNum = 1;
+            sections.forEach(section => {
+                const sectionQuestions = questions.filter(q => q.section === section);
+                sectionQuestions.forEach(q => {
+                    container.appendChild(createQuestionCard(q, questionNum));
+                    questionNum++;
+                });
+            });
+        }
+
+        function renderSectionQuestions(section) {
+            const container = document.getElementById('sectionContent');
+            container.innerHTML = '';
+            
+            // Find the starting index for this section
+            let startIndex = 1;
+            for (let i = 0; i < sections.length; i++) {
+                if (sections[i] === section) break;
+                startIndex += questions.filter(q => q.section === sections[i]).length;
+            }
+            
+            const sectionQuestions = questions.filter(q => q.section === section);
+            sectionQuestions.forEach((q, idx) => {
+                container.appendChild(createQuestionCard(q, startIndex + idx));
+            });
+        }
+
+        function createQuestionCard(q, index) {
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            card.innerHTML = `
+                <div class="question-number">Question ${index}</div>
+                <div class="result-question">${q.question}</div>
+                <div class="result-answer">
+                    <div class="result-answer-label">Answer</div>
+                    <div class="result-answer-text">${q.answer}</div>
+                </div>
+                <div class="result-explanation">${q.explanation}</div>
+                <span class="result-reference">📄 ${q.reference}</span>
+            `;
+            return card;
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const browseSection = document.getElementById('browseSection');
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                
+                if (query.length < 1) {
+                    resultsContainer.innerHTML = '';
+                    browseSection.style.display = 'block';
+                    return;
+                }
+
+                browseSection.style.display = 'none';
+                
+                // Check if searching for a question number
+                const numMatch = query.match(/^(?:question\s*)?(\d+)$/i);
+                if (numMatch) {
+                    const qNum = parseInt(numMatch[1]);
+                    if (qNum >= 1 && qNum <= questions.length) {
+                        resultsContainer.innerHTML = `<div class="results-count">Question ${qNum} of ${questions.length}</div>`;
+                        resultsContainer.appendChild(createQuestionCard(questions[qNum - 1], qNum));
+                        return;
+                    }
+                }
+                
+                // Regular keyword search (need at least 2 chars)
+                if (query.length < 2) {
+                    resultsContainer.innerHTML = '';
+                    browseSection.style.display = 'block';
+                    return;
+                }
+                
+                const results = questions.filter(q => 
+                    q.question.toLowerCase().includes(query) ||
+                    q.answer.toLowerCase().includes(query) ||
+                    q.explanation.toLowerCase().includes(query)
+                );
+
+                if (results.length === 0) {
+                    resultsContainer.innerHTML = `
+                        <div class="no-results">
+                            <div class="no-results-icon">🔍</div>
+                            <p>No results found for "${e.target.value}"</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Try different keywords or a question number (1-${questions.length})</p>
+                        </div>
+                    `;
+                } else {
+                    resultsContainer.innerHTML = `<div class="results-count">Found ${results.length} result${results.length > 1 ? 's' : ''}</div>`;
+                    results.forEach(q => {
+                        // Find the original question number
+                        const qIndex = questions.indexOf(q) + 1;
+                        resultsContainer.appendChild(createQuestionCard(q, qIndex));
+                    });
+                }
+            });
+        }
+
+        function setupScrollTop() {
+            const scrollBtn = document.getElementById('scrollTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
