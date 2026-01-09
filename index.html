@@ -156,39 +156,35 @@
         }
 
         .result-question {
-            font-size: 1rem;
+            font-size: 1.05rem;
+            font-weight: 600;
             color: var(--text);
             margin-bottom: 15px;
             line-height: 1.5;
         }
 
-        .result-answer {
-            background: rgba(74, 222, 128, 0.1);
-            border-left: 4px solid var(--success);
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 12px;
-        }
-
-        .result-answer-label {
-            font-size: 0.8rem;
-            color: var(--success);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .result-answer-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
         .result-explanation {
             color: var(--text-muted);
             font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .result-answer {
+            padding: 10px 0;
             margin-bottom: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .result-answer-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-right: 8px;
+        }
+
+        .result-answer-text {
+            font-size: 0.95rem;
+            color: var(--success);
         }
 
         .result-reference {
@@ -312,6 +308,56 @@
             color: var(--text-muted);
         }
 
+        .translate-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .translate-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* Google Translate styling override */
+        .goog-te-gadget {
+            font-family: 'DM Sans', sans-serif !important;
+        }
+
+        .goog-te-combo {
+            background: var(--card-bg) !important;
+            color: var(--text) !important;
+            border: 2px solid var(--border) !important;
+            border-radius: 8px !important;
+            padding: 10px 15px !important;
+            font-size: 1rem !important;
+            font-family: 'DM Sans', sans-serif !important;
+            cursor: pointer;
+        }
+
+        .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+        }
+
+        .goog-logo-link {
+            display: none !important;
+        }
+
+        .goog-te-gadget-icon {
+            display: none !important;
+        }
+
+        /* Hide Google Translate banner */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        body {
+            top: 0 !important;
+        }
+
         /* Mobile */
         @media (max-width: 600px) {
             .logo {
@@ -389,6 +435,10 @@
                 <div class="stat-label">Course Accurate</div>
             </div>
         </div>
+        <div class="translate-section">
+            <p class="translate-label">🌍 Translate explanations to your language:</p>
+            <div id="google_translate_element"></div>
+        </div>
     </header>
 
     <div class="container">
@@ -413,9 +463,22 @@
 
     <footer>
         <p>iTabs-Study Buddy • White Card WA Edition</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">Your study companion that actually knows the course</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Your study companion that actually knows the course • Available in 12 languages</p>
         <p style="margin-top: 15px;"><a href="https://www.eot.edu.au/online-courses/white-card/WA/course/" target="_blank" style="background: var(--primary); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">📚 Go to White Card WA Course</a></p>
     </footer>
+
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,fr,de,ko,ja,es,zh-CN,it,nl,pt,th,vi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         // Question Database
@@ -425,70 +488,70 @@
                 section: "Section 1: WHS Legislation",
                 question: "The main objective of the ___ Act 2011 is to secure the health and safety of workers and other persons at the workplace through elimination or minimisation of risks, so as to provide workers and others with the highest level of protection from hazards and risks, so far as reasonably practicable.",
                 answer: "Work Health Safety (WHS)",
-                explanation: "The Work Health and Safety Act 2011 (The Act) is concerned with the health and safety of all those involved with a workplace.",
+                explanation: "The WHS Act 2011 is the main law governing workplace safety across Australia. Its core goal is simple: eliminate risks where possible, or minimise them as much as reasonably practicable. This law covers everyone at a workplace - not just employees, but contractors, visitors, and even members of the public who might be affected by the work. The phrase 'so far as reasonably practicable' is key - it means you must do everything reasonable to control risks, considering factors like likelihood of harm, how serious it could be, and what controls are available.",
                 reference: "Section 1, Slide 4"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "What Act promotes and secures the safety and health of a person at work in Western Australia?",
                 answer: "Work Health and Safety Act 2020 WA",
-                explanation: "The WHS Act and accompanying regulations commenced in March 2022 in WA; it provides a framework to protect health, safety and welfare of workers.",
+                explanation: "Western Australia has its own WHS Act 2020, which came into effect in March 2022. Before this, WA had different safety laws, but now it's aligned with the national model. This is the law that applies to your White Card work in WA. It sets out duties for employers (PCBUs), workers, and others to ensure workplaces are safe. If you work interstate, be aware that while the laws are similar, each state has its own version.",
                 reference: "Section 1, Slide 5"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "The main object of this Act is to provide a balanced and nationally ___ framework to secure the health and safety of workers and workplaces.",
                 answer: "consistent",
-                explanation: "The WHS Act aims to provide nationally consistent laws across Australia.",
+                explanation: "Before harmonised WHS laws, each state had different safety rules - confusing for workers and businesses operating across borders. The national framework aims for consistency so that a tradie working in WA follows similar rules to one in Queensland or NSW. 'Balanced' means it considers both protecting workers AND allowing businesses to operate practically. Victoria is the main exception - they kept their own OHS Act 2004.",
                 reference: "Section 1, Slides 4-6"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "The Occupational Health and Safety Act 2004 aims to eliminate risks to the health, safety or welfare of employees and other persons at work in which State?",
                 answer: "Victoria",
-                explanation: "Victoria has its own OHS Act 2004 rather than the model WHS laws.",
+                explanation: "Victoria chose not to adopt the national WHS laws and kept its own Occupational Health and Safety Act 2004 (OHS Act). If you ever work in Victoria, you'll notice some differences in terminology and processes, though the overall safety principles are similar. This is a common exam question because it's the main exception to the 'nationally consistent' framework.",
                 reference: "Section 1, Slide 7"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "The purpose of the WHS Regulation 2017 is to harmonise WHS laws through a model framework that are designed to protect the ___ of workers and improve safety outcomes.",
                 answer: "safety",
-                explanation: "The WHS Regulations are designed to protect the safety of workers and improve safety outcomes.",
+                explanation: "The WHS Regulations sit underneath the WHS Act and provide the specific details. While the Act sets out broad duties (like 'provide a safe workplace'), the Regulations spell out exactly how - specific requirements for things like working at heights, hazardous chemicals, and construction work. Regulations are legally enforceable, unlike Codes of Practice which are guidance only.",
                 reference: "Section 1, Slide 8"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "Codes of Practice are a practical guide for PCBUs and workers on how to achieve what particular objective at work?",
                 answer: "Health and Safety",
-                explanation: "Codes of Practice show people in the workplace how they can fulfil the health and safety requirements of the Act.",
+                explanation: "Codes of Practice are practical 'how-to' guides approved by Safe Work Australia. They're not law themselves, but they show you how to meet legal requirements. For example, the Code of Practice for Construction Work explains how to safely work at heights, manage excavations, etc. Important: while you don't legally have to follow a Code exactly, if something goes wrong and you didn't follow it, you'll need to show your method was equally safe or better.",
                 reference: "Section 1, Slide 9"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "Construction work means any work carried out in connection with which of the following? (Alteration, Maintenance, Dismantling, Renovation, Demolition)",
                 answer: "All of the above",
-                explanation: "Construction work includes alteration, maintenance, dismantling, renovation, demolition, and more.",
+                explanation: "Construction work has a broad legal definition. It includes building new structures, but also alteration, renovation, maintenance, demolition, and dismantling. This matters because construction work triggers specific safety requirements - like needing a White Card, having a principal contractor on projects over $250,000, and requiring Safe Work Method Statements for high-risk work. Even painting a building or installing air conditioning counts as construction work.",
                 reference: "Section 1, Slide 11"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "Construction work includes which of the following? (Testing/maintenance of minor nature, Preparatory work/site prep, Prefabrication of elements, Manufacture of plant, Mining)",
                 answer: "Any work connected with any preparatory work or site preparation, including landscaping (as part of site preparation), carried out while undertaking construction work",
-                explanation: "Testing/maintenance of minor nature, manufacture of plant, and mining are NOT construction work.",
+                explanation: "Not everything on a worksite is 'construction work' under the law. Site preparation and landscaping ARE included. However, these are specifically EXCLUDED: minor testing/maintenance, manufacturing plant or equipment at a factory, prefabricating elements off-site, and mining operations (mining has its own separate safety laws). This distinction matters for determining what safety requirements apply.",
                 reference: "Section 1, Slide 11"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "Under the WHS Act 2011, 'a person who conducts the business or undertaking alone or with others, whether or not for profit or gain' is the definition of what?",
                 answer: "Person Conducting a Business or Undertaking OR PCBU",
-                explanation: "A PCBU can be a sole trader, partnership, company, unincorporated association or government department.",
+                explanation: "PCBU (Person Conducting a Business or Undertaking) is the legal term for whoever runs the business - it replaces the old term 'employer'. A PCBU can be a company, sole trader, partnership, franchise, or even a government department. Key point: 'whether or not for profit' means charities and volunteer organisations are included too. The PCBU has the primary duty of care - they're ultimately responsible for workplace safety, though everyone has duties.",
                 reference: "Section 1, Slide 12"
             },
             {
                 section: "Section 1: WHS Legislation",
                 question: "'Reasonably practicable', in relation to ensuring a safe workplace, means: (likelihood of hazard, degree of harm, knowledge of hazard, availability of controls, cost of controls)",
                 answer: "All of the above",
-                explanation: "Reasonably practicable considers likelihood, harm, knowledge, availability and cost.",
+                explanation: "This is one of the most important concepts in WHS. 'Reasonably practicable' means you must weigh up: (1) How likely is someone to be harmed? (2) How serious would the harm be? (3) What do we know about the hazard? (4) What controls are available? (5) What's the cost of those controls? You can't ignore a serious risk just because fixing it is expensive - but you also don't need to spend unlimited money on tiny risks. It's about proportionate, sensible risk management.",
                 reference: "Section 1, Slide 12"
             },
 
@@ -497,133 +560,133 @@
                 section: "Section 2: Duty of Care",
                 question: "Who has a duty of care, a responsibility, to make sure that they and other people are safe in the workplace?",
                 answer: "Everyone on site including those listed above",
-                explanation: "Everyone has a duty of care - the PCBU, workers, visitors, contractors, etc.",
+                explanation: "Duty of care isn't just the boss's responsibility - EVERYONE on site has a legal duty to work safely. This includes the PCBU (primary duty), workers, contractors, subcontractors, visitors, and even delivery drivers. Your duty means taking reasonable care for your own safety AND the safety of others who might be affected by what you do (or don't do). If you see a hazard and ignore it, you're breaching your duty of care.",
                 reference: "Section 2, Slide 1"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "In addition to ensuring the health and safety of workers while at work, the PCBU with management or control of a workplace must ensure which of the following?",
                 answer: "The safe means of entering and exiting the workplace",
-                explanation: "The PCBU must ensure the means of entering and exiting the workplace do not affect health and safety.",
+                explanation: "The PCBU must think beyond just the work itself - they're responsible for safe access in and out of the workplace. This includes things like: clear walkways, proper lighting, safe stairs and ladders, emergency exits that aren't blocked, and adequate signage. On construction sites, this often means designated pedestrian routes separate from vehicle movements, and safe scaffold access.",
                 reference: "Section 2, Slide 3"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "The Work Health and Safety Act 2011, sets out specific duties which a PCBU must ___ with as part of their general duty.",
                 answer: "comply",
-                explanation: "PCBUs must comply with specific duties set out in the WHS Act.",
+                explanation: "The word 'comply' is important here - it's not optional. The PCBU MUST comply with their duties under the Act. These include providing safe plant and equipment, safe systems of work, adequate facilities, proper training and supervision, and monitoring workplace conditions. Non-compliance can result in significant penalties including fines and even imprisonment for serious breaches.",
                 reference: "Section 2, Slide 3"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "Under the WHS Act 2011, a PCBU is NOT responsible for which of the following?",
                 answer: "Ensuring the health and safety of previous workers who are now engaged by another PCBU",
-                explanation: "Once a worker moves to another PCBU, that new PCBU takes on the duty of care.",
+                explanation: "Your PCBU is responsible for you while you work for them - but once you leave and work for someone else, your new employer takes over that responsibility. This makes sense: if you quit your job on Monday and start with a new company on Tuesday, your old boss isn't responsible for your safety at the new site. The duty follows the current employment relationship.",
                 reference: "Section 2, Slide 3"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "Under the Act, who is required to provide the proper and relevant instruction, training, instruction, and supervision, so as to minimise the risk to health and safety?",
                 answer: "PCBU",
-                explanation: "The PCBU must provide information, training, instruction, and supervision.",
+                explanation: "The PCBU must ensure workers have the knowledge and skills to work safely. This means: site-specific inductions, training on equipment and procedures, ongoing supervision (especially for new or inexperienced workers), and refresher training when things change. You can't just hand someone a tool and say 'figure it out' - proper training is a legal requirement, not a nice-to-have.",
                 reference: "Section 2, Slide 4"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "While at work, ___ must take reasonable care for their own health and safety, and that of others who may be affected by their acts or omissions.",
                 answer: "workers",
-                explanation: "Workers have a duty to take reasonable care for themselves and others.",
+                explanation: "As a worker, you have legal duties too - it's not all on the boss. You must: take reasonable care for yourself AND others, follow reasonable instructions, cooperate with safety policies, not recklessly interfere with safety equipment, and report hazards. 'Acts or omissions' means both what you DO (like taking shortcuts) and what you DON'T do (like not reporting a hazard you noticed).",
                 reference: "Section 2, Slide 5"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "There is a general obligation on ___, manufacturers and suppliers of plant and substances for use by people at work to ensure that their products are not a risk to health and safety when properly used.",
                 answer: "designers",
-                explanation: "Designers, manufacturers and suppliers all have obligations.",
+                explanation: "Safety starts at the design stage. Designers, manufacturers, and suppliers all have duties to ensure their products are safe when used correctly. This includes: designing out hazards where possible, providing safety information and instructions, and testing products. If a piece of equipment is inherently dangerous because of poor design, the designer can be held liable - not just the person using it on site.",
                 reference: "Section 2, Slide 6"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "Other people at the workplace, including customers and visitors must comply with any reasonable ___ that is given by the PCBU.",
                 answer: "instruction",
-                explanation: "Other persons must comply with reasonable instructions from the PCBU.",
+                explanation: "Even if you're just visiting a site, you must follow reasonable safety instructions. This is why visitors get inducted, wear PPE, and stay in designated areas. 'Reasonable' is the key word - instructions must actually relate to safety. If a site supervisor tells you to wear a hard hat in a construction zone, that's reasonable. The PCBU can ask people to leave if they refuse to comply with safety instructions.",
                 reference: "Section 2, Slide 7"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "Safe work practices must be followed by everyone involved in the work. If the work is to be performed in a different way the safe work practice must be reviewed and ___ if necessary.",
                 answer: "revised",
-                explanation: "Safe work practices must be reviewed and revised when work changes.",
+                explanation: "Safe work practices aren't set-and-forget documents. If the job changes - different location, different equipment, different conditions - the safe work practice must be reviewed and revised if needed. For example, a SWMS written for excavation in dry conditions might need updating if it rains and the ground becomes unstable. Always check that your safe work documents match what you're actually doing.",
                 reference: "Section 2, Slide 8"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "Which of the following are safe work practices? A: Drinking alcohol/PPE/Smoking B: Look for hazards/Clean area/Debris removal C: Smoking/Safe equipment/Avoid cleaning D: PPE/No drugs alcohol/Drinking water E: Make own SDS/PPE/Safe equipment",
                 answer: "B and D are correct",
-                explanation: "B and D contain only safe work practices. A, C, E contain unsafe practices.",
+                explanation: "Safe work practices include: identifying hazards, keeping work areas clean, proper debris removal, using PPE correctly, staying drug and alcohol free, and staying hydrated (drinking water). Options with alcohol, smoking in work areas, avoiding cleaning, or making your own SDS (Safety Data Sheets - these must come from manufacturers) are NOT safe practices. Good housekeeping prevents trips, falls, and fires.",
                 reference: "Section 2, Slide 8"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "When storing materials and equipment at the worksite, which of the following is NOT the proper procedure?",
                 answer: "Across doorways and walkways",
-                explanation: "Never store materials across doorways and walkways - this blocks exits and creates trip hazards.",
+                explanation: "Never block exits, doorways, or walkways with materials or equipment. In an emergency, blocked exits can be fatal. Proper storage means: materials stacked safely and securely, away from walkways and exits, not blocking fire equipment or electrical panels, and stored according to any specific requirements (like keeping flammables in designated areas). Good housekeeping is a legal requirement, not just tidiness.",
                 reference: "Section 2, Slide 9"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "If smoking on site is permitted there should be designated areas, not enclosed and at least ___ metres from any flammable or combustible goods.",
                 answer: "15",
-                explanation: "Smoking areas must be at least 15 metres from flammable materials.",
+                explanation: "Remember: 15 metres minimum from anything flammable or combustible. Smoking areas must be: designated (signed), not enclosed (open air for ventilation), and away from hazardous materials. Many construction sites are completely smoke-free due to the fire risks. This rule exists because a discarded cigarette near fuel, gas bottles, or flammable chemicals can cause explosions and fires.",
                 reference: "Section 2, Slide 9"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "When using an angle grinder, what safe work procedure is recommended to protect against sparks?",
                 answer: "A and B are correct (Wear eye/ear protectors and apron + Position guard over grinding disc)",
-                explanation: "Wear PPE and position the guard correctly for spark protection.",
+                explanation: "Angle grinders throw sparks and debris at high speed. Safe use requires: eye protection (sparks cause serious eye injuries), hearing protection (grinders are loud), a leather apron or protective clothing (sparks burn through light fabrics), AND keeping the guard in position over the disc. The guard deflects sparks and debris away from you. Never remove or tie back the guard - it's there for a reason.",
                 reference: "Section 2, Angle Grinder Safe Work Procedure"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "How can you ensure personal safety while operating an angle grinder? A: Check disc before/after B: Eye protection only with sparks C: Disc not touching before switch on D: Thicker for cutting, thinner for grinding",
                 answer: "A and C are correct",
-                explanation: "Check disc for damage, and ensure disc isn't touching workpiece before turning on. D is backwards - thicker for grinding, thinner for cutting.",
+                explanation: "Key angle grinder safety: (1) Always check the disc before AND after use for cracks, chips, or damage - a damaged disc can shatter at high speed causing serious injury. (2) Make sure the disc isn't touching the workpiece before you turn it on - this prevents kickback. Option D is BACKWARDS: cutting discs are thin, grinding discs are thick. Using the wrong disc for the job is dangerous.",
                 reference: "Section 2, Angle Grinder Safe Work Procedure"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "Which is NOT true about effective alcohol and drug programs?",
                 answer: "B: A rigid approach regardless of different conditions (This is NOT true - programs should be tailored to workplace needs)",
-                explanation: "Programs should be tailored to specific conditions, needs and resources of each workplace.",
+                explanation: "Drug and alcohol programs need to be tailored to each workplace - a 'rigid one-size-fits-all' approach doesn't work. Different sites have different risks, cultures, and needs. Effective programs include: clear policies, education about risks, testing where appropriate, support for workers with problems, and consistent enforcement. The goal is a safe workplace, not just punishment.",
                 reference: "Section 2, Slide 10"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "Which of the following does NOT require a licence? (Dogging, Rigging, Asbestos removal, Forklift, Chainsaw, Pressure equipment)",
                 answer: "Chainsaw operation",
-                explanation: "Chainsaw operation is not on the list of work requiring licences/permits.",
+                explanation: "High-risk work licences are required for: scaffolding over 4m, dogging, rigging, crane operation, hoist operation, forklift, pressure equipment, and asbestos removal. Chainsaw operation does NOT require a licence (though training and competency are still required). The licence system exists because these activities have high potential for serious injury or death if done incorrectly.",
                 reference: "Section 2, Slide 11"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "An example of work that may require a licence or permit include: (Painting, Hoist operations, Removing carpet, Landscaping, Plumbing)",
                 answer: "Hoist operations",
-                explanation: "Hoist operation is on the list of work requiring special licences.",
+                explanation: "Hoist operation requires a high-risk work licence. Hoists lift people or heavy materials - if something goes wrong, the consequences are severe. Other licensed work includes: cranes, forklifts, scaffolding over 4m, rigging, dogging, and pressure equipment. General trades like painting, carpet laying, and landscaping don't require WHS licences (though they may need trade licences).",
                 reference: "Section 2, Slide 11"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "A person must be trained and ___ but does NOT require a licence or ticket to operate a backhoe.",
                 answer: "competent",
-                explanation: "Earthmoving equipment like backhoes require training and competence, but not a licence.",
+                explanation: "Earthmoving equipment like backhoes, excavators, dozers, graders, and skid steers don't require a formal licence - but operators MUST be trained and competent. 'Competent' means you have the knowledge, skills, and experience to operate safely. This is usually demonstrated through a Certificate of Competency or VOC (Verification of Competency). Just because there's no licence doesn't mean anyone can jump on - training is still legally required.",
                 reference: "Section 2, Slide 12"
             },
             {
                 section: "Section 2: Duty of Care",
                 question: "What is an example of a prescribed activity?",
                 answer: "Asbestos identification & mobile crane repair",
-                explanation: "Prescribed activities include identification of asbestos and maintenance/repair of mobile cranes.",
+                explanation: "Prescribed activities require specific qualifications and often notification to the regulator. Examples include: asbestos identification and removal, mobile crane maintenance and repair, and all construction work (which requires general induction - your White Card). These activities are 'prescribed' because they involve significant risks that need qualified people and regulatory oversight.",
                 reference: "Section 2, Slide 13"
             },
 
@@ -632,266 +695,266 @@
                 section: "Section 3: Hazards & Risks",
                 question: "The intention of the WHS Management Plan is to ensure the risks associated with a complex construction project are ___ as there are usually many contractors and subcontractors involved.",
                 answer: "managed",
-                explanation: "WHS management plans ensure risks are managed on complex projects.",
+                explanation: "A WHS Management Plan is required for construction projects worth $250,000 or more. When you have multiple contractors on site - electricians, plumbers, concreters, scaffolders - coordination becomes critical. The plan ensures everyone knows the rules, responsibilities are clear, and risks don't fall through the cracks between different trades. It covers things like site rules, emergency procedures, and how different contractors will coordinate their work safely.",
                 reference: "Section 3, Slide 1"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "A ___ is anything (including a person's behaviour and an intrinsic property of a thing) or situation that can cause harm, injury, illness and death.",
                 answer: "hazard",
-                explanation: "A hazard is something that CAN cause harm. Risk is the likelihood it WILL.",
+                explanation: "Understanding the difference between hazard and risk is fundamental. A HAZARD is anything that CAN cause harm - it's the source of potential danger. Examples: electricity, heights, chemicals, heavy machinery, noise. A hazard exists whether anyone is near it or not. The hazard of electricity exists in every live wire. What matters is whether people are exposed to it and how likely harm is - that's where RISK comes in.",
                 reference: "Section 3, Slide 2"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "A risk is defined as:",
                 answer: "The possibility that any hazard will actually cause somebody harm",
-                explanation: "Risk refers to the possibility that harm might occur when exposed to a hazard.",
+                explanation: "RISK is the likelihood that a hazard will actually cause harm, combined with how serious that harm could be. Think of it as: Risk = Likelihood × Consequences. A live wire behind a locked panel has low risk (unlikely exposure). The same wire dangling in a walkway has high risk (very likely exposure). Risk assessment helps you prioritise - deal with high-likelihood, high-consequence risks first.",
                 reference: "Section 3, Slide 2"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Some common construction hazards include: A: Noise/manual handling/exposed wires B: Confined spaces/blood infection/frayed cords C: Manual handling/equipment/labelled chemicals D: Asbestos/chemicals/small break room",
                 answer: "A: Noise, manual handling, exposed electrical wires",
-                explanation: "All items in A are hazards. Other options contain non-hazards like 'small break room' or safe practices.",
+                explanation: "All items in Option A are genuine hazards: Noise damages hearing; manual handling causes musculoskeletal injuries (the most common workplace injury); exposed electrical wires can electrocute. The other options contain things that AREN'T hazards: 'labelled chemicals' (labelling is a CONTROL, unlabelled chemicals are the hazard), 'small break room' (not a hazard), properly managed items. Learn to identify actual hazards vs controls or neutral items.",
                 reference: "Section 3, Slide 3"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Hazard identification is the process of recognising that a hazard exists. All hazards must be identified and assessed to determine the level of risk. The risk must then be eliminated or ___.",
                 answer: "controlled",
-                explanation: "Risks must be eliminated or controlled.",
+                explanation: "The goal is always: eliminate the risk if possible, or control it if you can't eliminate it. Elimination means removing the hazard completely (best option). Control means reducing the risk to an acceptable level using the Hierarchy of Controls. You can't control what you haven't identified, which is why hazard identification comes first. Walk the site, talk to workers, check records, review near-misses - find the hazards before they find you.",
                 reference: "Section 3, Slide 5"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "You can identify hazards in the workplace by: (Completing checklists, Workplace inspections, Monitoring worksite, Feedback from others, Injury records)",
                 answer: "All of the above",
-                explanation: "All of these are valid hazard identification methods.",
+                explanation: "Effective hazard identification uses multiple methods: CHECKLISTS ensure you don't miss common hazards; INSPECTIONS let you see conditions firsthand; MONITORING tracks ongoing issues; FEEDBACK from workers catches things management might miss; INJURY RECORDS show what's actually causing harm. The best sites use all of these. Workers doing the job often spot hazards that office-based managers never see - their input is valuable.",
                 reference: "Section 3, Slide 5"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "If you identify a hazard during a workplace inspection you should:",
                 answer: "All of the above (Assess risk, Notify relevant people, Control/stop hazard if reasonably practical)",
-                explanation: "Assess, notify, and control or stop the hazard.",
+                explanation: "When you find a hazard, don't just note it and walk on. The response should be: (1) ASSESS the risk - how serious is it? How likely is harm? (2) NOTIFY relevant people - supervisor, safety officer, affected workers. (3) CONTROL or STOP if you reasonably can - if there's a spill, clean it up; if there's an immediate danger, stop work. Don't wait for paperwork if someone could get hurt in the next few minutes.",
                 reference: "Section 3, Slide 6"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Which of the following is NOT true about a risk assessment?",
                 answer: "A risk assessment justifies a decision that has already been made",
-                explanation: "Don't use risk assessment to justify decisions already made - it should inform decisions.",
+                explanation: "This is a critical point: risk assessments should INFORM decisions, not JUSTIFY decisions already made. If you've already decided to do something unsafe and then write a risk assessment to make it look okay, that's backwards and dangerous. The assessment should be honest, involve workers, consider all hazards, and lead to genuine controls. A tick-box exercise that just approves whatever management wants defeats the purpose.",
                 reference: "Section 3, Slide 7"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Who has responsibilities for risk management? (PCBU, Occupiers/Principal Contractors, Workers, HSR/Committees, Contractors on site)",
                 answer: "All of the above",
-                explanation: "Everyone has risk management responsibilities.",
+                explanation: "Risk management is everyone's business. The PCBU has primary responsibility, but workers must follow safe work practices and report hazards. Principal contractors coordinate multiple trades. HSRs represent workers on safety issues. Contractors must manage their own work safely. When multiple parties share a workplace, they must consult and cooperate - risks often occur at the boundaries between different responsibilities.",
                 reference: "Section 3, Slide 8"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "A PCBU must consult with ___ when identifying hazards and assessing risks arising from work.",
                 answer: "workers",
-                explanation: "PCBUs must consult with workers on hazard identification and risk assessment.",
+                explanation: "Worker consultation isn't optional - it's a legal requirement. Workers often know more about the actual hazards than managers because they're doing the work every day. Consultation means: sharing information about hazards and risks, giving workers a chance to express their views, actually taking those views into account, and telling workers the outcome. This isn't just a meeting - it's genuine two-way communication that improves safety decisions.",
                 reference: "Section 3, Slide 8"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "The Five-Step process helps control exposure to health and safety risks; identify the first step:",
                 answer: "Identify the hazard",
-                explanation: "5 Steps: 1. Identify hazards 2. Assess risks 3. Consult/report 4. Control 5. Review",
+                explanation: "The 5-Step Risk Management Process: (1) IDENTIFY the hazard - find what could cause harm; (2) ASSESS the risk - how likely, how serious; (3) CONSULT and REPORT - talk to workers, document findings; (4) CONTROL the hazard - eliminate or minimise using hierarchy of controls; (5) REVIEW - check controls are working, reassess when things change. You must identify hazards FIRST - you can't assess or control what you don't know about.",
                 reference: "Section 3, Slide 9"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What is NOT an example of a dangerous good? (Explosives, Flammable liquids/gases, Corrosives, Chemically reactive, Sunscreen, Highly toxic)",
                 answer: "Sunscreen",
-                explanation: "Sunscreen is PPE, not a dangerous good.",
+                explanation: "Dangerous goods are substances that pose immediate physical danger: explosives, flammable liquids and gases, oxidisers, toxic substances, corrosives, radioactive materials. Sunscreen is PPE (Personal Protective Equipment) - it protects you FROM a hazard (UV radiation), it's not a hazard itself. On site, dangerous goods must be properly stored, labelled, and handled according to their Safety Data Sheets (SDS).",
                 reference: "Section 3, Slide 10"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Workers can be exposed to Respirable Crystalline Silica (RCS) while performing which activities? (Tunnelling, Demolition, Brick cutting, Excavation)",
                 answer: "All of the above",
-                explanation: "RCS exposure can occur during all these activities.",
+                explanation: "Silica dust is one of the biggest health hazards in construction. RCS is found in concrete, bricks, morite, sandstone, granite - basically anything with sand or stone. Activities that create silica dust: cutting, grinding, drilling concrete or masonry; tunnelling; demolition; excavation in sandy soil. The particles are invisible and cause permanent lung damage (silicosis). Always use wet cutting methods and appropriate respiratory protection.",
                 reference: "Section 3, Slide 11"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Which picture best identifies a noise hazard?",
                 answer: "Using a jack hammer",
-                explanation: "Jackhammers emit noise levels over 85 dB(A) causing hearing damage.",
+                explanation: "Jackhammers produce noise levels well over 100 dB(A) - far above the 85 dB(A) limit for 8-hour exposure. Other high-noise construction activities: concrete cutting, grinding, hammering, pneumatic tools, heavy machinery. Noise-induced hearing loss is permanent and cumulative - each exposure adds to the damage. If you have to shout to be heard at arm's length, the noise level is likely damaging. Always wear hearing protection.",
                 reference: "Section 3, Slide 3"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "A man bending over lifting a box shows which hazard?",
                 answer: "manual handling",
-                explanation: "Manual handling involves lifting, lowering, pushing, pulling, carrying loads.",
+                explanation: "Manual handling is any activity requiring physical force to lift, lower, push, pull, carry, move, hold, or restrain something. It's the most common cause of workplace injury - back injuries, strains, sprains. Hazardous manual handling involves: repetitive movements, sustained awkward postures, high force, heavy loads, and vibration. Safe lifting: bend knees not back, keep load close to body, don't twist while lifting, get help for heavy/awkward loads.",
                 reference: "Section 3, Slide 13"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Risks from powered mobile plant include which of the following? A: Open spaces B: Plant overturning C: Mechanical failure D: Correctly tagged equipment",
                 answer: "B and C are correct",
-                explanation: "Plant overturning and mechanical failure are risks. Open spaces and correctly tagged equipment are not.",
+                explanation: "Powered mobile plant (excavators, forklifts, cranes, etc.) poses serious risks including: OVERTURNING (especially on slopes or soft ground), MECHANICAL FAILURE (brakes, hydraulics, steering), collisions with people or structures, and falling objects. 'Open spaces' isn't a risk (it's actually safer than confined spaces), and 'correctly tagged equipment' is a CONTROL, not a risk. Always do pre-start checks and stay out of swing/travel zones.",
                 reference: "Section 3, Slide 14"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What is an example of a hazard associated with traffic and mobile plant equipment?",
                 answer: "Hazard of moving parts and hot engine parts",
-                explanation: "Moving parts and hot engine/body parts are hazards to be aware of.",
+                explanation: "Mobile plant has multiple hazards beyond just being run over: MOVING PARTS can catch clothing, hair, or limbs (PTO shafts, fan belts, tracks); HOT SURFACES cause burns (engines, exhausts, hydraulic components); STORED ENERGY in hydraulic systems can cause sudden movements even when shut down; NOISE and VIBRATION cause long-term health problems. Never work on running machinery, and let hot components cool before maintenance.",
                 reference: "Section 3, Slide 15"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Workers outdoors will be exposed to UV ___ and heat ___.",
                 answer: "radiation, stress",
-                explanation: "UV radiation and heat stress are hazards for outdoor workers.",
+                explanation: "Outdoor workers face two related but different hazards: UV RADIATION from the sun causes skin cancer (Australia has the highest rates in the world) and eye damage; HEAT STRESS occurs when the body can't cool itself properly, potentially leading to heat stroke (a medical emergency). Protection: Slip on a shirt, Slop on sunscreen (SPF 30+), Slap on a hat, Seek shade, Slide on sunglasses. Also: hydrate, take breaks, schedule heavy work for cooler parts of the day.",
                 reference: "Section 3, Slide 17"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "The erection, alteration, use and dismantling of ___ exposes workers to the risk of a serious fall or being struck by falling objects.",
                 answer: "scaffold",
-                explanation: "Scaffold work is high risk for falls and falling objects.",
+                explanation: "Scaffolding is essential for working at heights, but erecting, using, and dismantling it is high-risk work. Falls from scaffold and objects falling from scaffold are common serious incidents. Key requirements: scaffolders must be licensed for work over 4 metres; scaffold must be inspected before each use; workers must be trained in safe scaffold use; tools and materials must be secured to prevent falling. Never modify scaffold without authorisation.",
                 reference: "Section 3, Slide 18"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What is one way to minimise the potential of falling objects?",
                 answer: "Create a perimeter containment screening or scaffold fan to contain falling objects",
-                explanation: "Perimeter screening, scaffold fans, hoardings or gantries contain falling objects.",
+                explanation: "Falling objects can kill - even a small bolt dropped from height generates lethal force. Controls include: PERIMETER SCREENS catch debris at the edge; SCAFFOLD FANS (debris nets) catch falling material; HOARDINGS protect pedestrians below; TOE BOARDS prevent objects rolling off platforms; EXCLUSION ZONES keep people out of drop areas. Also: secure all tools with lanyards, use enclosed material hoists, never throw anything from height.",
                 reference: "Section 3, Slide 19"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Work activities in a trench with greater depth than ___ meters require a Safe Work Method Statement (SWMS).",
                 answer: "1.5",
-                explanation: "Trenches deeper than 1.5 metres are high risk construction work requiring SWMS.",
+                explanation: "1.5 metres is a critical number to remember. Trenches and excavations deeper than 1.5m are classified as HIGH-RISK construction work and require: a SWMS (Safe Work Method Statement), shoring/benching/battering to prevent collapse, safe entry and exit points, and additional precautions for things like underground services. Trench collapses are often fatal - soil is heavy and victims suffocate quickly. Never enter an unprotected trench.",
                 reference: "Section 3, Slide 20"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What is NOT an example of a confined space? (Lunch room, Crawl spaces, Excavations, Trenches, Drainage pipes)",
                 answer: "A Lunch Room",
-                explanation: "A lunch room is designed for occupation, has normal access, proper ventilation - not a confined space.",
+                explanation: "Confined spaces have three characteristics: NOT designed for continuous human occupancy, restricted entry/exit, and may have a hazardous atmosphere. Examples: tanks, silos, pipes, trenches, excavations, crawl spaces, roof voids. A lunch room is designed for people, has normal doors, and normal air - it's NOT a confined space. Confined space work requires permits, atmospheric testing, rescue plans, and often specialised training.",
                 reference: "Section 3, Slide 22"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "An unplanned collapse can involve: A: Unstable building collapse B: Demolition collapse C: Load-bearing crane collapse D: Earth collapse from excavation",
                 answer: "Both A and C (Unstable building and crane/lift collapse)",
-                explanation: "Demolition and excavation collapses are planned activities, not unplanned.",
+                explanation: "UNPLANNED collapse means something fails unexpectedly - an unstable building falling, a crane tipping over, a hoist failing. These are different from PLANNED activities like controlled demolition or properly managed excavation. The question distinguishes between uncontrolled failures (dangerous) and managed activities (which have controls in place). When load-bearing equipment fails or structures collapse unexpectedly, there's no warning or protection.",
                 reference: "Section 3, Slide 23"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "To manage unplanned collapses, roofs, walls and floors should be ___ by a competent person before demolition.",
                 answer: "assessed",
-                explanation: "A competent person must assess the structure before demolition work.",
+                explanation: "Before any demolition work, a competent person must ASSESS the structure to identify hazards: asbestos, structural instability, underground services, hazardous materials, load-bearing elements. This assessment informs the demolition plan and prevents uncontrolled collapses. 'Competent person' means someone with appropriate training, experience, and qualifications - not just anyone with a hard hat.",
                 reference: "Section 3, Slide 23"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Which is NOT a hazard from hot/cold environments? (UV radiation, Heat stroke, Hypothermia, Slip hazards from ice, Heat exhaustion, Physical strain from PPE)",
                 answer: "Physical strain from wearing heavy protective clothing",
-                explanation: "Physical strain from PPE isn't a temperature hazard itself, though PPE can make temperature effects worse.",
+                explanation: "While wearing heavy PPE can be uncomfortable and contribute to heat stress, 'physical strain from PPE' is not itself a temperature hazard - it's a consequence of controls used to manage other hazards. Actual temperature hazards include: HEAT STROKE (body overheats, medical emergency), HEAT EXHAUSTION (dehydration, fatigue), HYPOTHERMIA (body too cold), UV RADIATION (sunburn, skin cancer), and SLIPS from ice/condensation.",
                 reference: "Section 3, Slide 24"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "In extreme environments, ice and condensation add to slip accidents when people are: A: Summertime B: No water break C: High humidity areas D: Using ice products E: Houses with AC",
                 answer: "C and D are correct (High humidity/condensation areas and Using ice/iced products)",
-                explanation: "Freezers, cold rooms, ice products, and high humidity areas like kitchens increase slip risk.",
+                explanation: "Slip hazards from ice and condensation occur in: HIGH HUMIDITY AREAS (commercial kitchens, some manufacturing) where moisture condenses on cold surfaces; and workplaces USING ICE/ICED PRODUCTS (freezers, cold stores, food processing). Water on smooth floors is extremely slippery. Controls include: anti-slip flooring, good drainage, regular cleaning, appropriate footwear, and warning signs.",
                 reference: "Section 3, Slide 24"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Which safety sign indicates something a worker MUST do? (Blue hearing protection, Green first aid, Yellow warning, Red fire hose, No smoking)",
                 answer: "Hearing Protection Must Be Worn (blue sign)",
-                explanation: "Blue circle = Regulatory Mandatory - must be followed.",
+                explanation: "Safety signs follow Australian Standards with specific colours: BLUE CIRCLE = Mandatory (you MUST do this); RED CIRCLE with line = Prohibition (you must NOT do this); YELLOW TRIANGLE = Warning (hazard present); GREEN = Emergency/First Aid; RED SQUARE = Fire equipment location. A blue 'Hearing Protection Must Be Worn' sign means exactly that - you must wear hearing protection in that area, no exceptions.",
                 reference: "Section 3, Slide 26"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What sign indicates where firefighting equipment is located?",
                 answer: "Fire Hose (red sign with spiral)",
-                explanation: "Red with white = Fire Sign indicating fire equipment location.",
+                explanation: "Fire equipment location signs are RED with WHITE symbols. They show you where to find extinguishers, hose reels, fire blankets, etc. In an emergency, you need to find this equipment fast - that's why fire signs use a distinctive colour that stands out. Know where fire equipment is located in your workplace BEFORE you need it.",
                 reference: "Section 3, Slide 26"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Which sign indicates something is prohibited?",
                 answer: "No Smoking (red circle with diagonal line)",
-                explanation: "Red circle with diagonal line = Prohibition - not permitted.",
+                explanation: "Prohibition signs have a RED CIRCLE with a diagonal line through a BLACK symbol. They tell you what you must NOT do: no smoking, no entry, no mobile phones, etc. Ignoring prohibition signs can result in disciplinary action, but more importantly, they exist because the prohibited activity creates a serious hazard - like smoking near flammable materials.",
                 reference: "Section 3, Slide 26"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Which sign helps find medical assistance on site?",
                 answer: "First Aid (green sign with white cross)",
-                explanation: "Green with white = Emergency Information including first aid.",
+                explanation: "Emergency information signs are GREEN with WHITE symbols. These include first aid locations, emergency exits, emergency showers, eyewash stations, and assembly points. Green = safety/go = this way to help. In an emergency, look for green signs to find first aid, exits, or assembly areas.",
                 reference: "Section 3, Slide 26"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Which is a warning sign?",
                 answer: "Beware of Crane (yellow triangle sign)",
-                explanation: "Yellow triangle = Hazard Warning.",
+                explanation: "Warning signs are YELLOW TRIANGLES with BLACK symbols. They alert you to hazards: cranes operating, forklifts, electrical danger, slip hazards, etc. Unlike prohibition signs (which ban something), warning signs just tell you to be careful - the hazard exists, stay alert. When you see a 'Beware of Crane' sign, look up and around before entering the area.",
                 reference: "Section 3, Slide 26"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What information does the green cross sign give?",
                 answer: "Location of a defibrillator",
-                explanation: "The green sign with cross indicates defibrillator location.",
+                explanation: "A green sign with a heart/lightning symbol or cross indicates an AED (Automated External Defibrillator) location. Defibrillators save lives during cardiac arrest - every minute without defibrillation reduces survival chances by about 10%. Know where the defib is on your site. Green emergency signs also mark first aid kits, emergency exits, and eyewash stations.",
                 reference: "Section 3, Slide 26"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "A construction site safety sign requires all of which PPE? (Safety boots, Hi-vis vest, Hearing protection, Hard hat)",
                 answer: "All of the above",
-                explanation: "Standard construction site entry signs typically require all these PPE items.",
+                explanation: "Construction site entry signs typically show ALL required PPE for that site. Common requirements: hard hat (falling objects), hi-vis vest (visibility to plant operators), safety boots (punctures, crushing, slips), hearing protection (noise), safety glasses (debris). These combination signs are usually at site entrances - if you don't have the required PPE, you can't enter.",
                 reference: "Section 3, Slide 26"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Safety signs demand contractors must have proof of ___ Safety Induction Training before commencing work.",
                 answer: "industry",
-                explanation: "General industry safety induction training (White Card).",
+                explanation: "This refers to your White Card - the general industry safety induction required for all construction work. It's called 'general' or 'industry' induction because it covers basics that apply across all construction, not site-specific information. You'll also need a site-specific induction for each workplace, but the White Card is the baseline that proves you understand fundamental WHS requirements.",
                 reference: "Section 3, Slide 26"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What is NOT true about isolation and danger tagging?",
                 answer: "Operation or corrective work must be performed immediately",
-                explanation: "Work must NOT be performed immediately - isolate and tag first, then work safely.",
+                explanation: "WRONG approach: see a problem, immediately start fixing it. CORRECT approach: STOP, ISOLATE, TAG, then work safely. Lock out/tag out procedures exist because people have been killed when someone else turned on equipment they were working on. You isolate energy sources, apply YOUR personal lock and tag, verify isolation is effective, THEN do the work. Never rush - taking time to isolate properly saves lives.",
                 reference: "Section 3, Slide 28"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What are OUT OF SERVICE tags used for?",
                 answer: "A and D are correct (Prevent accidents/damage AND Warn equipment is damaged/out of service)",
-                explanation: "Yellow/black tags warn of damaged equipment and prevent accidents.",
+                explanation: "OUT OF SERVICE tags (yellow/black) are different from DANGER tags. They indicate equipment is faulty, damaged, or awaiting repair - NOT safe to use but not immediately life-threatening. Only authorised people can remove them (after repair). DANGER tags (red/black/white) are more serious - they mean lives are at risk, and only the person who placed the tag can remove their own tag.",
                 reference: "Section 3, Slide 30"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "Which best describes PPE? A: With other controls B: Administration when risk remains C: Last resort when no other controls D: Prevent access E: Replace with less hazardous",
                 answer: "A and C are correct (Last resort + Together with other controls)",
-                explanation: "PPE is last resort and can be used with other control measures.",
+                explanation: "PPE is the LAST LINE OF DEFENCE in the Hierarchy of Controls - used when you can't eliminate, substitute, isolate, engineer, or administrate away the risk. Importantly, PPE is often used TOGETHER with other controls, not instead of them. Example: A fume cabinet (engineering) reduces exposure, but you still wear a respirator (PPE) as backup. PPE protects only the wearer and only if worn correctly.",
                 reference: "Section 3, Slide 31"
             },
             {
                 section: "Section 3: Hazards & Risks",
                 question: "What is NOT a factor when choosing PPE? (Australian Standards, Suitable for activity, Cheapest option, Suitable size, Medical conditions, Length of time worn)",
                 answer: "Will it be the cheapest option for the employer?",
-                explanation: "Cost is not a valid factor for choosing PPE - safety comes first.",
+                explanation: "Cost is NOT a valid factor for selecting PPE - safety comes first. Valid factors include: compliance with Australian Standards, suitability for the specific task, correct size and fit for the worker, any medical conditions that affect PPE use (like respiratory conditions affecting mask choice), and how long it needs to be worn (comfort for extended use). Cheap PPE that doesn't protect properly is no protection at all.",
                 reference: "Section 3, Slide 32"
             },
 
@@ -900,161 +963,161 @@
                 section: "Section 4: Health & Safety Personnel",
                 question: "A health and safety representative has been elected by a work group to ___ them on health and safety issues.",
                 answer: "represent",
-                explanation: "HSRs represent their work group on health and safety matters.",
+                explanation: "A Health and Safety Representative (HSR) is elected by workers to REPRESENT them on safety matters. They're not appointed by management - they're chosen by the workers themselves. HSRs can inspect the workplace, investigate complaints, accompany inspectors, and represent workers in discussions with the PCBU. They serve 3-year terms and can be re-elected. Having an HSR gives workers a voice on safety issues.",
                 reference: "Section 4, Slide 1"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Which is NOT true of a HSR? (Elected by work group, Consult with PCBU, As many as needed, Assist workers, Secure participation, Work independently of PCBU)",
                 answer: "They work independently to the PCBU in relation to WHS",
-                explanation: "HSRs cooperate WITH the PCBU, not independently.",
+                explanation: "HSRs COOPERATE with the PCBU - they don't work independently or against them. The relationship should be collaborative: the HSR brings worker perspectives, the PCBU brings resources and management authority, and together they solve safety issues. An HSR who refuses to engage with management, or a PCBU who ignores the HSR, both fail to meet the spirit of the law. Good safety outcomes require cooperation.",
                 reference: "Section 4, Slide 1"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "A Health and Safety Committee facilitates cooperation between PCBU and workers in developing and carrying out ___ to ensure health and safety.",
                 answer: "measures",
-                explanation: "HSCs develop and carry out measures for workplace health and safety.",
+                explanation: "A Health and Safety Committee (HSC) is a formal group that brings together workers (including HSRs) and management to develop safety MEASURES - policies, procedures, rules, initiatives. The PCBU must establish an HSC within 2 months if requested by an HSR or 5+ workers. At least half the committee must be workers. The HSC meets at least quarterly and provides a forum for discussing safety issues and developing solutions together.",
                 reference: "Section 4, Slide 3"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Who are important WHS personnel? (Supervisor, WHS committee, Emergency staff, Project manager, First aid officers)",
                 answer: "All of the above",
-                explanation: "All of these are key WHS personnel.",
+                explanation: "Many people have WHS roles: SUPERVISORS ensure safe work, conduct toolbox talks, enforce procedures; WHS COMMITTEES develop policies and resolve issues; EMERGENCY STAFF (wardens) coordinate evacuations; PROJECT MANAGERS oversee site safety; FIRST AID OFFICERS treat injuries and maintain equipment. Know who these people are on your site - if you have a safety concern, you need to know who to talk to.",
                 reference: "Section 4, Slide 4"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "HSRs can ___ the workplace or any area where work is carried out by workers in the work group.",
                 answer: "inspect",
-                explanation: "HSRs have the power to inspect workplace areas.",
+                explanation: "HSRs have specific powers under WHS law, including the right to INSPECT the workplace. They can look at any area where their work group operates, examine equipment, check procedures, and identify hazards. HSRs can also: accompany inspectors, investigate complaints, attend worker interviews (with consent), request information from the PCBU, and issue Provisional Improvement Notices for certain breaches.",
                 reference: "Section 4, Slide 2"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Ways to raise health and safety matters include: (Toolbox talks, WHS meetings, Hazard report form, Discussion with HSR, Workplace consultation)",
                 answer: "All of the above",
-                explanation: "All of these are valid ways to raise WHS issues.",
+                explanation: "You have multiple channels to raise safety concerns: TOOLBOX TALKS (informal daily/weekly briefings); HAZARD REPORT FORMS (document issues formally); WHS MEETINGS (scheduled forums); TALKING TO YOUR HSR (worker representative); WORKPLACE CONSULTATION (formal process for changes). Use whatever method suits the urgency - an immediate danger needs verbal escalation now, while a general improvement suggestion can go on a form.",
                 reference: "Section 4, Slide 11"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Ways to obtain WHS information include: (Sharing with coworkers, Reading safety minutes, WHS training, Asking supervisor, Talking to safety authority)",
                 answer: "All of the above",
-                explanation: "All of these are ways to get WHS information.",
+                explanation: "Stay informed about WHS through multiple sources: TRAINING SESSIONS (formal learning); MEETING MINUTES (what was discussed and decided); SUPERVISOR CONVERSATIONS (specific guidance); COWORKER DISCUSSIONS (practical experience); and even contacting WORKSAFE directly for authoritative advice. Being informed isn't just good practice - workers have a duty to follow reasonable instructions, which means understanding what they are.",
                 reference: "Section 4, Slide 12"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Which are types of WHS documents? (JSA, Labels, Receipts, SDS, Invoices, SWMS, SOPs, Risk assessments)",
                 answer: "SDS, JSA, Standard Operating Procedures (SOP's)",
-                explanation: "Receipts and invoices are not WHS documents.",
+                explanation: "Key WHS documents: SDS (Safety Data Sheets) - chemical hazard info from manufacturers; JSA (Job Safety Analysis) - step-by-step hazard identification for tasks; SOPs (Standard Operating Procedures) - how to do tasks safely; SWMS (Safe Work Method Statements) - required for high-risk construction work; RISK ASSESSMENTS - formal hazard evaluation. Receipts and invoices are accounting documents, not safety documents.",
                 reference: "Section 4, Slide 13"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "To assess risk, you need to consider both likelihood and ___.",
                 answer: "consequences",
-                explanation: "Risk = Likelihood × Consequences.",
+                explanation: "Risk assessment combines two factors: LIKELIHOOD (how probable is it that harm will occur?) and CONSEQUENCES (how serious would that harm be?). A risk matrix plots these together: something unlikely but fatal is still high-priority; something likely but trivial might be lower priority. Example: tripping on flat ground (likely, minor consequence) vs falling from height (less likely, severe consequence) - the fall gets more attention despite being less frequent.",
                 reference: "Section 4, Slide 15"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Operating machinery with risk of losing fingers, very likely to happen - what risk score?",
                 answer: "1",
-                explanation: "Serious injury + Very likely = Risk Score 1 (act immediately).",
+                explanation: "Using a risk matrix: CONSEQUENCE = 'Long term illness or serious injury' (losing fingers); LIKELIHOOD = 'Very Likely - could happen at any time'. This intersection gives Risk Score 1 (highest priority, red zone). Scores 1-3 mean 'do something IMMEDIATELY'. You cannot let workers continue operating that machinery without urgent action - stop work, implement controls, reassess. This is exactly the kind of situation the risk matrix is designed to flag.",
                 reference: "Section 4, Slide 16"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Working with hazardous chemicals - what is another control measure besides PPE and separate storage?",
                 answer: "A: Recommend air monitoring schedule with ventilation and access to fresh air",
-                explanation: "Air monitoring and ventilation are additional engineering controls.",
+                explanation: "For hazardous chemicals, controls work in layers: ELIMINATION (don't use the chemical); SUBSTITUTION (use a less hazardous alternative); ENGINEERING (ventilation, fume extraction, air monitoring); ADMINISTRATIVE (training, procedures, signage); PPE (respirators, gloves). Air monitoring and ventilation are ENGINEERING controls - higher up the hierarchy than PPE, and providing protection for everyone in the area, not just individuals wearing PPE.",
                 reference: "Section 4, Slide 19"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "WHS Regulations require risks are ___ in a certain order, known as the Hierarchy of Control.",
                 answer: "controlled",
-                explanation: "Risks must be controlled following the Hierarchy of Control.",
+                explanation: "The Hierarchy of Control isn't just best practice - it's a legal requirement under WHS Regulations. You MUST work through controls in order: try to eliminate first; if you can't eliminate, try to substitute; then isolate; then engineer; then administrate; and finally PPE as a last resort. Skipping straight to PPE without considering higher-level controls is non-compliant and less effective.",
                 reference: "Section 4, Slide 18"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Elimination, Substitution, Isolation, Engineering, Administration and PPE are all part of the ___ of controls.",
                 answer: "hierarchy",
-                explanation: "The Hierarchy of Controls lists control measures from most to least effective.",
+                explanation: "The HIERARCHY of Controls ranks control measures from most to least effective: (1) ELIMINATION - remove hazard completely (best); (2) SUBSTITUTION - replace with less hazardous; (3) ISOLATION - separate people from hazard; (4) ENGINEERING - physical controls like guards, ventilation; (5) ADMINISTRATIVE - procedures, training, signage; (6) PPE - personal equipment (least effective, last resort). Higher levels protect everyone; lower levels rely on individual compliance.",
                 reference: "Section 4, Slide 18"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "In risk management, which best describes ELIMINATION?",
                 answer: "Removing the hazard and associated risk completely",
-                explanation: "Elimination = remove the hazard entirely.",
+                explanation: "ELIMINATION is the gold standard - the hazard no longer exists, so neither does the risk. Examples: design out the hazard (no work at height needed), use pre-fabricated components instead of on-site work, don't use a hazardous chemical at all. Elimination isn't always possible, but you must genuinely consider it first. A hazard that doesn't exist can't hurt anyone - that's why it tops the hierarchy.",
                 reference: "Section 4, Slide 18"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "In risk management, which best describes SUBSTITUTION?",
                 answer: "Replacing the hazard with something which is less hazardous",
-                explanation: "Substitution = replace with something safer (e.g., water-based paint instead of solvent).",
+                explanation: "SUBSTITUTION means swapping a dangerous thing for a safer alternative. Examples: water-based paint instead of solvent-based (less toxic fumes); smaller loads instead of heavy ones (less manual handling risk); quieter equipment (less noise). The hazard still exists but in a reduced form. Important: make sure the substitute doesn't introduce new hazards - sometimes the 'safer' option has different risks to consider.",
                 reference: "Section 4, Slide 18"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "In risk management, which best describes ISOLATION?",
                 answer: "Physically separating the hazard from the workers either by distance or the use of barriers",
-                explanation: "Isolation = keep hazard away from workers using barriers or distance.",
+                explanation: "ISOLATION keeps people away from hazards using physical separation. Examples: guardrails around machinery; chemical storage in a separate building; remote-controlled equipment so operators aren't near danger zones; fume cabinets containing hazardous vapours. The hazard still exists and is still dangerous - but people can't get close enough to be harmed. Barriers must be robust enough that they can't be easily bypassed.",
                 reference: "Section 4, Slide 18"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "In risk management, which best describes ADMINISTRATION?",
                 answer: "Ensuring there are work methods, practices or procedures designed to minimise exposure to a hazard, as well as providing information, training or instruction",
-                explanation: "Administrative controls include SOPs, training, signage, policies.",
+                explanation: "ADMINISTRATIVE controls rely on human behaviour: training people to work safely, providing procedures to follow, posting warning signs, rotating workers to limit exposure, scheduling noisy work when fewer people are around. These are less reliable than physical controls because they depend on people consistently doing the right thing. That's why they're lower in the hierarchy - but they're still essential, especially combined with other controls.",
                 reference: "Section 4, Slide 18"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "In risk management, which best describes ENGINEERING?",
                 answer: "Creating a safer environment by providing physical control methods including a mechanical device or process",
-                explanation: "Engineering controls include guards, hoists, ventilation systems.",
+                explanation: "ENGINEERING controls use physical devices or design changes to reduce risk. Examples: machine guards (prevent contact with moving parts); ventilation systems (remove airborne hazards); hoists and trolleys (reduce manual handling); RCDs/safety switches (prevent electrical shock); noise dampening (reduce sound levels). Engineering controls are more reliable than administrative controls because they don't depend on human behaviour - the guard protects you whether you're paying attention or not.",
                 reference: "Section 4, Slide 18"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "What PPE secures you when working at heights?",
                 answer: "Harness",
-                explanation: "A safety harness prevents falls when working at heights.",
+                explanation: "A safety HARNESS is fall-arrest PPE that catches you if you fall. It distributes the force of a fall across your body (chest, thighs) rather than concentrating it on one point like a belt would. Harnesses must be: correctly fitted, inspected before each use, attached to an adequate anchor point, and used with a shock-absorbing lanyard. Training is essential - incorrect use can cause serious injury even in a 'caught' fall.",
                 reference: "Section 4, Slide 20"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "What PPE protects from sun damage when working outdoors?",
                 answer: "Protective Clothing & Sunscreen",
-                explanation: "UV protective clothing and sunscreen protect against sun damage.",
+                explanation: "Sun protection PPE includes: UV-rated protective clothing (long sleeves, collars, darker colours provide better protection); SPF 30+ sunscreen (reapply every 2 hours, more often if sweating); broad-brim hats (at least 7.5cm brim, not caps which leave ears exposed); sunglasses (wraparound styles that meet AS/NZS standards). Australia has the highest skin cancer rates in the world - sun protection is essential, not optional.",
                 reference: "Section 4, Slide 20"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "What PPE prevents slips and protects feet from falling objects?",
                 answer: "Safety Boots",
-                explanation: "Safety boots with protective toe caps and slip-resistant soles.",
+                explanation: "Safety boots provide multiple protections: STEEL/COMPOSITE TOE CAPS protect against crushing and falling objects; PUNCTURE-RESISTANT SOLES protect against nails and sharp objects; SLIP-RESISTANT SOLES prevent falls on slippery surfaces; ANKLE SUPPORT prevents sprains on uneven ground. Construction boots should meet AS/NZS 2210.3. Proper fit matters - boots that are too loose or too tight cause blisters and reduce protection.",
                 reference: "Section 4, Slide 20"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "What PPE limits exposure to airborne particles or contaminated air?",
                 answer: "Respirator",
-                explanation: "Respirators protect against dust, vapour, gas, and oxygen-deficient atmospheres.",
+                explanation: "RESPIRATORS protect your lungs from airborne hazards: dust (including silica dust - a major construction risk), vapours, gases, fumes, and oxygen-deficient atmospheres. Types range from simple disposable P2 masks (for dust) to half-face/full-face respirators with cartridges (for chemicals) to supplied-air breathing apparatus (for oxygen-deficient spaces). Critical: facial hair prevents a proper seal - respirators don't work on beards.",
                 reference: "Section 4, Slide 20"
             },
             {
                 section: "Section 4: Health & Safety Personnel",
                 question: "Which image shows INCORRECT PPE for asbestos work?",
                 answer: "A (person with no protective suit, hair exposed, just half-face respirator)",
-                explanation: "Asbestos work requires full body protection - coveralls, hood, proper respirator.",
+                explanation: "Asbestos work requires FULL protection: disposable coveralls (to prevent fibres sticking to clothes and being taken home); hood (asbestos fibres in hair); P2/P3 respirator properly fitted (minimum half-face, often full-face); gloves; boot covers. The image showing just a respirator with normal clothes and exposed hair is WRONG - asbestos fibres would contaminate clothing and hair, potentially exposing family members. Asbestos removal also requires a licence and specific procedures.",
                 reference: "Section 4, Slide 20"
             },
 
@@ -1063,154 +1126,154 @@
                 section: "Section 5: Emergency Procedures",
                 question: "The emergency plan must include: (Effective response, Evacuation procedures, Notify emergency services, Medical treatment, Communications)",
                 answer: "All of the above",
-                explanation: "Emergency plans must cover all of these elements.",
+                explanation: "Emergency plans aren't optional paperwork - they're lifesaving documents. Required elements: EFFECTIVE RESPONSE (what to do for different emergencies); EVACUATION PROCEDURES (how to get everyone out safely); NOTIFICATION (how to contact 000 and who coordinates); MEDICAL TREATMENT (first aid, ambulance access); COMMUNICATIONS (alarms, PA systems, how wardens coordinate). Plans must be tested through drills, and everyone needs to know the basics before an emergency happens.",
                 reference: "Section 5, Slide 1"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Which is NOT a first aid plan procedure? (Equipment available, Facilities accessible, Document incidents, Certified personnel only, Adequate trained workers, Only one first aid officer)",
                 answer: "Workers have only one main first aid officer regardless of number of workers on site",
-                explanation: "The number of first aid officers should scale with worker numbers.",
+                explanation: "The number of first aid officers should SCALE with worker numbers - one person can't cover a large site or multiple shifts. WHS regulations require: 1 trained first aid officer for every 25+ workers; accessible first aid equipment; first aid rooms for larger sites (200+ workers, or 100+ on construction); and documentation of all treatments. If your only first aider calls in sick, you have a problem - that's why adequate coverage matters.",
                 reference: "Section 5, Slide 2"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Who has responsibilities for first aid in the workplace? (Supervisor, Site Manager, Certified employee, First Aid Officer, Worker)",
                 answer: "All of the above",
-                explanation: "Everyone has a role in first aid compliance.",
+                explanation: "First aid is everyone's responsibility at different levels: MANAGERS ensure adequate resources and trained personnel; SUPERVISORS ensure their team knows first aid locations; FIRST AID OFFICERS provide treatment and maintain equipment; WORKERS must know where first aid is, report injuries, and complete incident forms. Even if you're not trained in first aid, you can still raise the alarm, direct the first aider to the casualty, and call 000.",
                 reference: "Section 5, Slide 3"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "A worker must be familiar with the ___ of first aid equipment.",
                 answer: "location",
-                explanation: "Workers must know where first aid equipment is located.",
+                explanation: "Every worker should know where first aid equipment is BEFORE they need it. In an emergency, you don't have time to search. First aid kits should be clearly signed, easily accessible, and appropriate for the workplace hazards. On a construction site, know where the nearest kit is to your work area. Also know who the trained first aiders are and how to contact them quickly.",
                 reference: "Section 5, Slide 3"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Where should first aid staff names/contacts NOT be displayed? (First aid kits, WHS coordinator, Company database, Exit of worksite, Office)",
                 answer: "D: At the exit of the worksite",
-                explanation: "Exit of worksite is not a listed location for first aid contact display.",
+                explanation: "First aider contact details should be displayed where people can easily see them and access them: WITH FIRST AID KITS (so you know who to call when you get there); IN OFFICES (easy reference); WITH THE WHS COORDINATOR (central safety point); IN COMPANY SYSTEMS (accessible information). The EXIT isn't a practical location - people leaving the site don't need this information, and people needing first aid need it inside the workplace, not at the exit.",
                 reference: "Section 5, Slide 5"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "First aid procedures should explain how workers will ___ injuries and illnesses.",
                 answer: "report",
-                explanation: "Procedures must cover how to report workplace injuries and illnesses.",
+                explanation: "Injury REPORTING is essential for multiple reasons: it ensures the injured person gets proper treatment and follow-up; it creates a legal record if workers' compensation is needed; it identifies hazards that caused the injury; and it allows analysis of patterns that might reveal systemic problems. Even minor injuries should be reported - a small cut today might indicate a hazard that causes a serious injury tomorrow.",
                 reference: "Section 5, Slide 4"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Which is NOT a notifiable incident type? (Serious burn, Hospital treatment, Medical treatment within 48 hrs, Spinal injury, Amputation, Sprain)",
                 answer: "A sprain",
-                explanation: "A sprain is minor - not a notifiable serious injury.",
+                explanation: "NOTIFIABLE INCIDENTS must be reported to the regulator (WorkSafe) immediately. These include: death; immediate hospital admission; amputation; serious burns; spinal injuries; loss of bodily function; serious head injuries; and medical treatment within 48 hours of substance exposure. A sprain, while painful and requiring treatment, is a minor injury that doesn't meet the 'serious' threshold. The site must be preserved after a notifiable incident until an inspector arrives or advises otherwise.",
                 reference: "Section 5, Slide 7"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "The PCBU must report a notifiable incident to the regulator ___ after becoming aware.",
                 answer: "immediately",
-                explanation: "Notifiable incidents must be reported immediately.",
+                explanation: "IMMEDIATELY means as soon as possible - not 'later today' or 'when convenient'. For notifiable incidents, the PCBU must: call the regulator right away; preserve the incident site (don't move anything unless necessary for safety or rescue); and provide written notification within 48 hours if requested. Failing to notify is an offence. The regulator needs to know quickly so they can decide whether to investigate and ensure other workers are protected.",
                 reference: "Section 5, Slide 6"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Near misses/dangerous occurrences include: (Fall/release from height, Structure collapse, Excavation failure, Electric shock, Explosion/fire/gas escape)",
                 answer: "All of the above",
-                explanation: "All of these are dangerous incidents that must be reported.",
+                explanation: "DANGEROUS OCCURRENCES are notifiable even if nobody was injured - they exposed people to serious risk. Examples: uncontrolled explosions, fires, or gas releases; collapse of structures, cranes, hoists, or excavations; electric shocks; falls of objects from height. A near miss where scaffolding collapses but nobody happens to be standing there is still notifiable - the next time, someone might not be so lucky. These incidents signal serious hazards that need immediate attention.",
                 reference: "Section 5, Slide 6"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Why report incidents to the regulator?",
                 answer: "They use the information to identify solutions to and implement improvements for workplace safety issues",
-                explanation: "Reporting helps prevent future incidents and improve safety.",
+                explanation: "Incident reporting isn't about blame or bureaucracy - it's about LEARNING and IMPROVEMENT. When WorkSafe collects incident data, they can: identify industry-wide trends; develop better guidance and codes of practice; target inspections at high-risk workplaces; and share learnings so the same incidents don't keep happening. Your report might help prevent someone else from being injured in a similar way.",
                 reference: "Section 5, Slide 10"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "An infection from work is an example of a serious ___ or injury.",
                 answer: "illness",
-                explanation: "Work-related infections are serious illnesses.",
+                explanation: "Work-related ILLNESSES are just as serious as injuries - they're covered by the same reporting requirements. Notifiable illnesses include: infections from working with biological materials, blood/body fluids, animals, or micro-organisms; medical treatment required within 48 hours of chemical exposure; and any illness where work is a significant contributing factor. Construction workers at risk include plumbers (sewage, needlestick injuries) and demolition workers (asbestos, biological waste).",
                 reference: "Section 5, Slide 7"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Medical treatment within 48 hours of substance exposure - is this a serious illness/injury? (yes/no)",
                 answer: "yes",
-                explanation: "Medical treatment within 48 hours of exposure is a notifiable serious illness.",
+                explanation: "YES - if you need medical treatment by a doctor within 48 hours of being exposed to a substance at work, this is classified as a SERIOUS ILLNESS under WHS law and is notifiable. This covers chemical exposures, inhalation of fumes or dust, skin contact with hazardous substances, etc. The 48-hour timeframe recognises that some exposure effects aren't immediately apparent. If this happens to you, ensure it's properly reported.",
                 reference: "Section 5, Slide 7"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "If a worker has reasonable concern about serious risk to health/safety from a hazard, they must:",
                 answer: "Cease or refuse to carry out work and notify the PCBU as soon as possible",
-                explanation: "Workers can stop unsafe work and must notify the PCBU.",
+                explanation: "Workers have the legal RIGHT TO STOP WORK if they reasonably believe there's a serious and immediate risk. This isn't about avoiding work you don't like - it's about genuine safety concerns. The process: STOP the dangerous work; NOTIFY the PCBU immediately; EXPLAIN your concerns. You can be directed to other safe work while the issue is resolved. You're protected from discrimination for exercising this right - the law backs you up.",
                 reference: "Section 5, Slide 8"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Which are emergency situations? (Structural collapse, Injury, Trench needs barrier, Toxic vapours, Chemical spill, Late materials, Wrong PPE, Fire)",
                 answer: "Fire, Structural collapse, Chemical spill",
-                explanation: "These are actual emergencies. Trench needing barrier, late materials, wrong PPE are not emergencies.",
+                explanation: "EMERGENCIES are sudden, unforeseen events requiring immediate action that present serious risk to life. FIRE, STRUCTURAL COLLAPSE, and CHEMICAL SPILL are emergencies - they're immediate, dangerous, and need urgent response. 'Injury to personnel' can be an emergency depending on severity. However: 'trench needs a barrier' is a hazard to fix; 'late materials' is a logistics problem; 'wrong PPE' is a compliance issue. Don't confuse everyday problems with genuine emergencies.",
                 reference: "Section 5, Slide 13"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "For a gas leak, you must follow ___ response procedures including evacuation plans and reporting procedures.",
                 answer: "emergency",
-                explanation: "Gas leaks require emergency response procedures.",
+                explanation: "A gas leak is an EMERGENCY - it presents immediate risk of explosion, fire, or asphyxiation. Emergency response: raise the alarm; evacuate the area (don't use lifts, don't turn electrical switches on or off as sparks can ignite gas); assemble at the muster point; account for all personnel; call emergency services; don't re-enter until authorities declare it safe. Know your emergency procedures BEFORE an incident - in a real emergency, there's no time to read them.",
                 reference: "Section 5, Slide 14"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Key elements of emergency response include: (Keep tidy/Obtain PPE/Raise awareness OR Raise alarm/Keep calm/Obtain PPE OR Raise alarm/Keep calm/Obtain help)",
                 answer: "Raise alarm, Keep calm, Obtain help",
-                explanation: "Keep calm, raise alarm, check safety, obtain help.",
+                explanation: "Emergency response basics: KEEP CALM (panic causes bad decisions and additional injuries); RAISE THE ALARM (alert others to the danger); CHECK YOUR SAFETY (don't become another casualty); OBTAIN HELP (call 000, notify wardens, get first aid). Notice that 'obtain PPE' isn't in the correct answer - in an emergency evacuation, you leave immediately, you don't stop to find safety gear. Getting out quickly is more important than being properly dressed.",
                 reference: "Section 5, Slide 14"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Notification of emergency authorities depends on type of ___ or emergency, legal responsibilities, emergency plan and communications.",
                 answer: "incident",
-                explanation: "The type of incident determines who to notify.",
+                explanation: "Who you notify depends on the type of INCIDENT: Fire brigade for fires; Ambulance for medical emergencies; Police for security incidents, fatalities, or crime scenes; WorkSafe for notifiable incidents; EPA for environmental spills. Your emergency plan should specify who calls whom. Usually, the Chief Warden or site manager coordinates external notifications, but any worker might need to call 000 if they're first on scene.",
                 reference: "Section 5, Slide 15"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "In emergency you may need to contact: Fire brigade, police, ___ or workplace personnel.",
                 answer: "ambulance",
-                explanation: "Fire, police and ambulance are the main emergency services (000).",
+                explanation: "The three main emergency services reached through 000: FIRE BRIGADE (fires, hazmat, rescue); POLICE (security threats, traffic control, fatalities); AMBULANCE (medical emergencies). You might also contact workplace personnel like supervisors, wardens, or first aiders. When calling 000, stay calm, state the emergency type, give the exact address, describe what's happening, how many people are affected, and any hazards emergency services should know about.",
                 reference: "Section 5, Slide 15"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "To reduce effects of explosion or toxic gas reaction, what document should be developed?",
                 answer: "An emergency plan",
-                explanation: "Emergency plans should cover hazardous chemical emergencies.",
+                explanation: "Workplaces using hazardous chemicals need an EMERGENCY PLAN specifically addressing chemical emergencies. This should include: site maps showing chemical storage locations; procedures for spills, leaks, fires, and explosions; PPE requirements for responders; evacuation routes avoiding contaminated areas; notification procedures for emergency services and neighbours; containment measures to prevent chemicals entering drains or waterways. Generic emergency plans aren't enough - chemical hazards need chemical-specific responses.",
                 reference: "Section 5, Slide 16"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "Why might automatic sprinklers NOT be suitable for some workplaces?",
                 answer: "A: The presence of chemicals that may react with water",
-                explanation: "Water can cause hazardous chemical reactions with some substances.",
+                explanation: "Water reacts dangerously with some chemicals - it can cause: violent reactions, release of toxic gases, explosions, or spread of contamination. Examples: alkali metals react explosively with water; some acids release toxic fumes when diluted; water spreads oil fires rather than extinguishing them. Emergency plans for chemical workplaces must ensure automatic sprinklers won't make things worse. Alternative suppression systems (foam, dry chemical, CO2) may be needed.",
                 reference: "Section 5, Slide 16"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "When can you interfere with an electrical incident scene? A: Save life B: Prevent injury C: Relieve suffering D: Prevent property damage",
                 answer: "All of the above",
-                explanation: "All four are valid exceptions for interfering with an incident scene.",
+                explanation: "After a serious electrical incident, the scene must generally be PRESERVED for investigation - moving things or cleaning up can destroy evidence. However, you CAN interfere to: SAVE A LIFE (rescue someone); PREVENT INJURY (make the area safe); RELIEVE SUFFERING (provide first aid); or PREVENT PROPERTY DAMAGE. These exceptions recognise that human welfare comes before evidence preservation. Document what you changed and why.",
                 reference: "Section 5, Slide 17"
             },
             {
                 section: "Section 5: Emergency Procedures",
                 question: "In emergency, person in charge of mobile plant must ensure stop control isn't affected by:",
                 answer: "B: Electrical or electronic circuit malfunction",
-                explanation: "Emergency stops must work despite electrical malfunctions.",
+                explanation: "Emergency stop controls on mobile plant MUST work reliably - if an electrical fault disables the E-stop, the machine becomes uncontrollable in an emergency. Plant controllers must ensure emergency stops are: hardwired (not software-dependent); regularly tested; protected from electrical interference; and able to function even if other circuits fail. This is why pre-start checks include testing the E-stop - if it doesn't work, the machine shouldn't operate.",
                 reference: "Section 5, Slide 17"
             }
         ];
@@ -1298,11 +1361,11 @@
             card.innerHTML = `
                 <div class="question-number">Question ${index}</div>
                 <div class="result-question">${q.question}</div>
-                <div class="result-answer">
-                    <div class="result-answer-label">Answer</div>
-                    <div class="result-answer-text">${q.answer}</div>
-                </div>
                 <div class="result-explanation">${q.explanation}</div>
+                <div class="result-answer">
+                    <span class="result-answer-label">Answer:</span>
+                    <span class="result-answer-text">${q.answer}</span>
+                </div>
                 <span class="result-reference">📄 ${q.reference}</span>
             `;
             return card;
