@@ -71,10 +71,17 @@
             display: inline-block;
             background: var(--primary);
             color: white;
-            padding: 5px 15px;
+            padding: 8px 18px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
         }
 
         /* Search Section */
@@ -197,63 +204,137 @@
             font-family: 'Space Mono', monospace;
         }
 
-        /* Browse Sections */
-        .browse-section {
-            margin-top: 40px;
+        /* Key Terms Section */
+        .key-terms-section {
+            margin-bottom: 30px;
         }
 
-        .browse-title {
-            font-size: 1.3rem;
+        .key-terms-title {
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--text);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .browse-title::before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: var(--primary);
-            border-radius: 2px;
+        .key-terms-title::before {
+            content: '📖';
         }
 
-        .section-tabs {
-            display: flex;
-            flex-wrap: wrap;
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 10px;
-            margin-bottom: 25px;
         }
 
-        .section-tab {
-            padding: 12px 20px;
+        .term-btn {
+            padding: 12px 15px;
             background: var(--card-bg);
             border: 2px solid var(--border);
             border-radius: 10px;
-            color: var(--text-muted);
-            font-weight: 500;
+            color: var(--text);
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-family: 'DM Sans', sans-serif;
         }
 
-        .section-tab:hover {
+        .term-btn:hover {
             border-color: var(--primary);
+            background: var(--accent);
+        }
+
+        .term-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .term-definition {
+            display: none;
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .term-definition.show {
+            display: block;
+        }
+
+        .term-definition h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .term-definition p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .term-close {
+            background: var(--accent);
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .term-close:hover {
             color: var(--text);
         }
 
-        .section-tab.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
+        /* Welcome Message */
+        .welcome-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
         }
 
-        .section-count {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin-left: 5px;
+        .welcome-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .welcome-message h2 {
+            color: var(--text);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .welcome-message p {
+            max-width: 400px;
+            margin: 0 auto 10px;
+        }
+
+        .example-searches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .example-search {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .example-search:hover {
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
         /* No Results */
@@ -317,45 +398,32 @@
         .translate-label {
             font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        /* Google Translate styling override */
-        .goog-te-gadget {
-            font-family: 'DM Sans', sans-serif !important;
+        .language-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
         }
 
-        .goog-te-combo {
-            background: var(--card-bg) !important;
-            color: var(--text) !important;
-            border: 2px solid var(--border) !important;
-            border-radius: 8px !important;
-            padding: 10px 15px !important;
-            font-size: 1rem !important;
-            font-family: 'DM Sans', sans-serif !important;
+        .lang-btn {
+            background: var(--card-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 0.85rem;
             cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'DM Sans', sans-serif;
         }
 
-        .goog-te-gadget-simple {
-            background: transparent !important;
-            border: none !important;
-        }
-
-        .goog-logo-link {
-            display: none !important;
-        }
-
-        .goog-te-gadget-icon {
-            display: none !important;
-        }
-
-        /* Hide Google Translate banner */
-        .goog-te-banner-frame {
-            display: none !important;
-        }
-
-        body {
-            top: 0 !important;
+        .lang-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
         /* Mobile */
@@ -376,13 +444,17 @@
                 font-size: 1.5rem;
             }
 
-            .section-tab {
-                padding: 10px 15px;
-                font-size: 0.85rem;
-            }
-
             .result-card {
                 padding: 15px;
+            }
+
+            .terms-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .term-btn {
+                padding: 10px 8px;
+                font-size: 0.8rem;
             }
         }
 
@@ -418,9 +490,14 @@
 </head>
 <body>
     <header>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="50" height="50" style="margin-bottom: 10px;">
+          <circle cx="100" cy="100" r="90" fill="#FF6B35"/>
+          <circle cx="100" cy="55" r="12" fill="white"/>
+          <rect x="86" y="80" width="28" height="60" rx="5" fill="white"/>
+        </svg>
         <div class="logo">iTabs<span>-Study Buddy</span></div>
         <h1>White Card WA Course Helper</h1>
-        <span class="badge">EOT.edu.au Course</span>
+        <a href="https://www.eot.edu.au/online-courses/white-card/WA/course/" target="_blank" class="badge">EOT.edu.au Course →</a>
         <div class="stats">
             <div class="stat">
                 <div class="stat-number">115+</div>
@@ -437,7 +514,16 @@
         </div>
         <div class="translate-section">
             <p class="translate-label">🌍 Translate explanations to your language:</p>
-            <div id="google_translate_element"></div>
+            <div class="language-buttons">
+                <button class="lang-btn" onclick="translatePage('tl')">Filipino</button>
+                <button class="lang-btn" onclick="translatePage('id')">Bahasa Indonesia</button>
+                <button class="lang-btn" onclick="translatePage('es')">Español</button>
+                <button class="lang-btn" onclick="translatePage('pt')">Português</button>
+                <button class="lang-btn" onclick="translatePage('fr')">Français</button>
+                <button class="lang-btn" onclick="translatePage('de')">Deutsch</button>
+                <button class="lang-btn" onclick="translatePage('it')">Italiano</button>
+                <button class="lang-btn" onclick="translatePage('nl')">Nederlands</button>
+            </div>
         </div>
     </header>
 
@@ -445,17 +531,46 @@
         <div class="search-section">
             <div class="search-box">
                 <span class="search-icon">🔍</span>
-                <input type="text" id="searchInput" placeholder="Search by question number (e.g. 47) or keywords (e.g. PCBU, hazard, PPE...)">
+                <input type="text" id="searchInput" placeholder="Search by question number (e.g. 47) or keywords">
             </div>
-            <p class="search-hint">Type a question number, keyword, or paste part of a question to find the answer</p>
+            <p class="search-hint">Type a question number, paste part of a question, or search keywords like "PCBU" or "hazard"</p>
         </div>
 
-        <div id="resultsContainer"></div>
+        <div id="resultsContainer">
+            <!-- Welcome message shown by default -->
+            <div class="welcome-message" id="welcomeMessage">
+                <div class="welcome-icon">🔍</div>
+                <h2>Search for any question</h2>
+                <p>Type a question number (1-115) or search keywords from your course</p>
+                <p style="font-size: 0.85rem; margin-top: 15px;">Try these:</p>
+                <div class="example-searches">
+                    <span class="example-search" onclick="doSearch('1')">Question 1</span>
+                    <span class="example-search" onclick="doSearch('PCBU')">PCBU</span>
+                    <span class="example-search" onclick="doSearch('hazard')">hazard</span>
+                    <span class="example-search" onclick="doSearch('PPE')">PPE</span>
+                    <span class="example-search" onclick="doSearch('emergency')">emergency</span>
+                </div>
+            </div>
+        </div>
 
-        <div class="browse-section" id="browseSection">
-            <div class="browse-title">Browse by Section</div>
-            <div class="section-tabs" id="sectionTabs"></div>
-            <div id="sectionContent"></div>
+        <!-- Key Terms Section -->
+        <div class="key-terms-section">
+            <div class="key-terms-title">Key Terms - Tap to see meaning</div>
+            <div class="terms-grid">
+                <button class="term-btn" onclick="showTerm('pcbu')">PCBU</button>
+                <button class="term-btn" onclick="showTerm('hsr')">HSR</button>
+                <button class="term-btn" onclick="showTerm('swms')">SWMS</button>
+                <button class="term-btn" onclick="showTerm('ppe')">PPE</button>
+                <button class="term-btn" onclick="showTerm('sds')">SDS</button>
+                <button class="term-btn" onclick="showTerm('whs')">WHS</button>
+                <button class="term-btn" onclick="showTerm('hazard')">Hazard</button>
+                <button class="term-btn" onclick="showTerm('risk')">Risk</button>
+            </div>
+            <div class="term-definition" id="termDefinition">
+                <h3 id="termTitle"></h3>
+                <p id="termText"></p>
+                <button class="term-close" onclick="hideTerm()">Close ✕</button>
+            </div>
         </div>
     </div>
 
@@ -463,24 +578,72 @@
 
     <footer>
         <p>iTabs-Study Buddy • White Card WA Edition</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">Your study companion that actually knows the course • Available in 12 languages</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Your study companion that actually knows the course</p>
         <p style="margin-top: 15px;"><a href="https://www.eot.edu.au/online-courses/white-card/WA/course/" target="_blank" style="background: var(--primary); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">📚 Go to White Card WA Course</a></p>
     </footer>
 
-    <!-- Google Translate -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,fr,de,ko,ja,es,zh-CN,it,nl,pt,th,vi',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
+    <!-- Translate function -->
+    <script>
+        function translatePage(lang) {
+            const currentUrl = window.location.href;
+            const translateUrl = `https://translate.google.com/translate?sl=en&tl=${lang}&u=${encodeURIComponent(currentUrl)}`;
+            window.open(translateUrl, '_blank');
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
+        // Key Terms Database
+        const terms = {
+            pcbu: {
+                title: "PCBU - Person Conducting a Business or Undertaking",
+                text: "The legal term for whoever runs the business - replaces the old term 'employer'. Can be a company, sole trader, partnership, or government department. The PCBU has the primary duty of care and is ultimately responsible for workplace safety. 'Whether or not for profit' means charities and volunteer organisations are included too."
+            },
+            hsr: {
+                title: "HSR - Health and Safety Representative",
+                text: "A worker elected by their work group to represent them on health and safety matters. HSRs can inspect the workplace, investigate complaints, accompany inspectors, and represent workers in discussions with the PCBU. They serve 3-year terms and work cooperatively with management - not independently."
+            },
+            swms: {
+                title: "SWMS - Safe Work Method Statement",
+                text: "A document that describes how high-risk construction work will be carried out safely. Required by law for work like: working at heights over 2m, trenches deeper than 1.5m, demolition, asbestos removal, and work near live electrical. Must identify hazards, assess risks, and describe control measures."
+            },
+            ppe: {
+                title: "PPE - Personal Protective Equipment",
+                text: "Equipment worn to minimise exposure to hazards - the LAST LINE OF DEFENCE in the Hierarchy of Controls. Includes hard hats, safety boots, hi-vis vests, gloves, safety glasses, hearing protection, respirators, and harnesses. Must meet Australian Standards and be properly fitted."
+            },
+            sds: {
+                title: "SDS - Safety Data Sheet",
+                text: "A document from the manufacturer that provides information about a hazardous chemical. Includes: what it is, hazards, safe handling, storage requirements, first aid, spill procedures, and disposal. Must be kept accessible wherever hazardous chemicals are used. You cannot make your own SDS."
+            },
+            whs: {
+                title: "WHS - Work Health and Safety",
+                text: "The laws, regulations, and practices that protect people at work. The WHS Act 2011 is the main national law (WA has WHS Act 2020). WHS covers everyone at a workplace - workers, contractors, visitors, and even members of the public. The goal is to eliminate or minimise risks 'so far as reasonably practicable'."
+            },
+            hazard: {
+                title: "Hazard",
+                text: "Anything that CAN cause harm - the source of potential danger. Examples: electricity, heights, chemicals, heavy machinery, noise, manual handling. A hazard exists whether anyone is near it or not. Different from RISK, which is the likelihood that the hazard will actually cause harm."
+            },
+            risk: {
+                title: "Risk",
+                text: "The possibility that a hazard will actually cause harm, combined with how serious that harm could be. Risk = Likelihood × Consequences. A live wire behind a locked panel has LOW risk (unlikely exposure). The same wire in a walkway has HIGH risk. Risk assessment helps you prioritise what to fix first."
+            }
+        };
+
+        function showTerm(termKey) {
+            const term = terms[termKey];
+            document.getElementById('termTitle').textContent = term.title;
+            document.getElementById('termText').textContent = term.text;
+            document.getElementById('termDefinition').classList.add('show');
+            
+            // Update active state
+            document.querySelectorAll('.term-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function hideTerm() {
+            document.getElementById('termDefinition').classList.remove('show');
+            document.querySelectorAll('.term-btn').forEach(btn => btn.classList.remove('active'));
+        }
+
         // Question Database
         const questions = [
             // SECTION 1: WHS LEGISLATION
@@ -1278,82 +1441,19 @@
             }
         ];
 
-        // Group questions by section
-        const sections = [...new Set(questions.map(q => q.section))];
+        // Helper function to do search from example buttons
+        function doSearch(query) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = query;
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+        }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            renderSectionTabs();
-            renderAllQuestions();
             setupSearch();
             setupScrollTop();
         });
-
-        function renderSectionTabs() {
-            const tabsContainer = document.getElementById('sectionTabs');
-            
-            // Add "All" tab
-            const allTab = document.createElement('div');
-            allTab.className = 'section-tab active';
-            allTab.innerHTML = `All <span class="section-count">(${questions.length})</span>`;
-            allTab.onclick = () => {
-                setActiveTab(allTab);
-                renderAllQuestions();
-            };
-            tabsContainer.appendChild(allTab);
-
-            // Add section tabs
-            sections.forEach(section => {
-                const count = questions.filter(q => q.section === section).length;
-                const tab = document.createElement('div');
-                tab.className = 'section-tab';
-                const shortName = section.replace('Section ', 'S').replace(': ', ': ');
-                tab.innerHTML = `${shortName} <span class="section-count">(${count})</span>`;
-                tab.onclick = () => {
-                    setActiveTab(tab);
-                    renderSectionQuestions(section);
-                };
-                tabsContainer.appendChild(tab);
-            });
-        }
-
-        function setActiveTab(activeTab) {
-            document.querySelectorAll('.section-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            activeTab.classList.add('active');
-        }
-
-        function renderAllQuestions() {
-            const container = document.getElementById('sectionContent');
-            container.innerHTML = '';
-            
-            let questionNum = 1;
-            sections.forEach(section => {
-                const sectionQuestions = questions.filter(q => q.section === section);
-                sectionQuestions.forEach(q => {
-                    container.appendChild(createQuestionCard(q, questionNum));
-                    questionNum++;
-                });
-            });
-        }
-
-        function renderSectionQuestions(section) {
-            const container = document.getElementById('sectionContent');
-            container.innerHTML = '';
-            
-            // Find the starting index for this section
-            let startIndex = 1;
-            for (let i = 0; i < sections.length; i++) {
-                if (sections[i] === section) break;
-                startIndex += questions.filter(q => q.section === sections[i]).length;
-            }
-            
-            const sectionQuestions = questions.filter(q => q.section === section);
-            sectionQuestions.forEach((q, idx) => {
-                container.appendChild(createQuestionCard(q, startIndex + idx));
-            });
-        }
 
         function createQuestionCard(q, index) {
             const card = document.createElement('div');
@@ -1374,18 +1474,19 @@
         function setupSearch() {
             const searchInput = document.getElementById('searchInput');
             const resultsContainer = document.getElementById('resultsContainer');
-            const browseSection = document.getElementById('browseSection');
+            const welcomeMessage = document.getElementById('welcomeMessage');
 
             searchInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase().trim();
                 
                 if (query.length < 1) {
                     resultsContainer.innerHTML = '';
-                    browseSection.style.display = 'block';
+                    resultsContainer.appendChild(welcomeMessage);
+                    welcomeMessage.style.display = 'block';
                     return;
                 }
 
-                browseSection.style.display = 'none';
+                welcomeMessage.style.display = 'none';
                 
                 // Check if searching for a question number
                 const numMatch = query.match(/^(?:question\s*)?(\d+)$/i);
@@ -1401,7 +1502,8 @@
                 // Regular keyword search (need at least 2 chars)
                 if (query.length < 2) {
                     resultsContainer.innerHTML = '';
-                    browseSection.style.display = 'block';
+                    resultsContainer.appendChild(welcomeMessage);
+                    welcomeMessage.style.display = 'block';
                     return;
                 }
                 
